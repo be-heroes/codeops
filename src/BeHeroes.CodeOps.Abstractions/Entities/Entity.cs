@@ -7,16 +7,16 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
     public abstract class Entity<TKey> : IEntity<TKey> where TKey : struct
     {
         private int? _requestedHashCode;
-        private List<IDomainEvent> _domainEvents;
 
-        public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
+        private IList<IDomainEvent>? _domainEvents;
+
+        public IReadOnlyCollection<IDomainEvent>? DomainEvents => _domainEvents?.AsReadOnly();
 
         [Required]
         public TKey Id { get; protected set; }
 
         protected Entity()
         {
-
         }
 
         public void AddDomainEvent(IDomainEvent @event)
@@ -40,7 +40,7 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
             return this.Id.Equals(default(TKey));
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj == null || !(obj is Entity<TKey>))
                 return false;

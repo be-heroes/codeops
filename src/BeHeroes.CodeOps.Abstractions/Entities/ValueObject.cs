@@ -23,7 +23,7 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
 
         protected abstract IEnumerable<object> GetAtomicValues();
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj == null || obj.GetType() != GetType())
             {
@@ -57,7 +57,7 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
              .Aggregate((x, y) => x ^ y);
         }
 
-        public ValueObject GetCopy()
+        public ValueObject? GetCopy()
         {
             return this.MemberwiseClone() as ValueObject;
         }

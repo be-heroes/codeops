@@ -1,6 +1,4 @@
-using System;
 using System.Globalization;
-using System.Linq;
 using System.Numerics;
 using BeHeroes.CodeOps.Abstractions.ExtensionMethods;
 
@@ -10,7 +8,7 @@ namespace BeHeroes.CodeOps.Abstractions.Strings
     {
         public const string DefaultHexPrefix = "0x";
 
-        public string Prefix { get; set; }
+        public string Prefix { get; set; }        
         private byte[] Bytes { get; set; }
         public bool IsLittleEndian { get; set; }
 
@@ -62,16 +60,9 @@ namespace BeHeroes.CodeOps.Abstractions.Strings
             return this;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            try
-            {
-                return (HexString) obj == this;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return (obj != null) ? (HexString) obj == this : false;
         }
 
         public override int GetHashCode()

@@ -12,7 +12,9 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
         public int Id { get; private set; }
 
         protected EntityEnumeration()
-        { }
+        { 
+            Name = string.Empty;
+        }
 
         protected EntityEnumeration(int id, string name)
         {
@@ -29,7 +31,7 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
             return fields.Select(f => f.GetValue(null)).Cast<T>();
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is EntityEnumeration otherValue))
             {
@@ -74,6 +76,6 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
             return matchingItem;
         }
 
-        public int CompareTo(object other) => Id.CompareTo(((EntityEnumeration)other).Id);
+        public int CompareTo(object? other) => Id.CompareTo((other as EntityEnumeration)?.Id);
     }
 }

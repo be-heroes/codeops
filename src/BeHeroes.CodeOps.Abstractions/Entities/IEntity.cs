@@ -1,6 +1,5 @@
 ﻿using BeHeroes.CodeOps.Abstractions.Data;
 using BeHeroes.CodeOps.Abstractions.Events;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BeHeroes.CodeOps.Abstractions.Entities
@@ -14,7 +13,7 @@ namespace BeHeroes.CodeOps.Abstractions.Entities
 
     public interface IEntity : IView, IValidatableObject
     {
-        IReadOnlyCollection<IDomainEvent> DomainEvents { get; }
+        IReadOnlyCollection<IDomainEvent>? DomainEvents { get; }
 
         void AddDomainEvent(IDomainEvent @event);
 
