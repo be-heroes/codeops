@@ -15,16 +15,16 @@ namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
 {
     public abstract class EntityContext : DbContext, IUnitOfWork
     {
-        protected readonly IMediator _mediator;
-        protected readonly IDictionary<Type, IEnumerable<IView>> _seedData;
+        protected readonly IMediator? _mediator;
+        protected readonly IDictionary<Type, IEnumerable<IView>>? _seedData;
 
-        public IDbContextTransaction GetCurrentTransaction { get; private set; }
+        public IDbContextTransaction? GetCurrentTransaction { get; private set; }
 
         public Assembly ModelConfigurationAssembly { get; set; }
 
         protected EntityContext() : this(new DbContextOptions<EntityContext>()) { }
 
-        protected EntityContext(DbContextOptions options, IMediator mediator = default, IDictionary<Type, IEnumerable<IView>> seedData = default) : base(options)
+        protected EntityContext(DbContextOptions options, IMediator? mediator = default, IDictionary<Type, IEnumerable<IView>>? seedData = default) : base(options)
         {
             _mediator = mediator;
             _seedData = seedData;
@@ -75,10 +75,7 @@ namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
             // side effects from the domain event handlers which are using the same DbContext with "InstancePerLifetimeScope" or "scoped" lifetime
             // B) Right AFTER committing data (EF SaveChanges) into the DB will make multiple transactions. 
             // You will need to handle eventual consistency and compensatory actions in case of failures in any of the Handlers.
-            if (_mediator != null)
-            {
-                await _mediator.DispatchDomainEventsAsync(this);
-            }
+            await _mediator?.DispatchDomainEventsAsync(this);
 
             // After executing this line all the changes (from the Command Handler and Domain Event Handlers) 
             // performed through the DbContext will be committed
