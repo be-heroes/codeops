@@ -17,7 +17,7 @@ namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
 
             var entityEntries = entities as EntityEntry<IEntity>[] ?? entities.ToArray();
             var domainEvents = entityEntries
-                .SelectManyOrDefault(x => x.Entity.DomainEvents)
+                .SelectMany(x => x.Entity.DomainEvents)
                 .ToList();
 
             entityEntries.ToList().ForEach(entity => entity.Entity.ClearDomainEvents());
