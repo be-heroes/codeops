@@ -17,6 +17,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -53,7 +54,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var releaseDto = await response.Content.ReadFromJsonAsync<ReleaseDto>(null, cancellationToken);
+            var releaseDto = await response.Content.ReadFromJsonAsync<ReleaseDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return releaseDto;
         }
@@ -65,7 +66,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var profileDto = await response.Content.ReadFromJsonAsync<ProfileDto>(null, cancellationToken);
+            var profileDto = await response.Content.ReadFromJsonAsync<ProfileDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return profileDto;
         }
@@ -77,7 +78,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var definitionDto = await response.Content.ReadFromJsonAsync<BuildDefinitionDto>(null, cancellationToken);
+            var definitionDto = await response.Content.ReadFromJsonAsync<BuildDefinitionDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return definitionDto;
         }
@@ -89,7 +90,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var definitionDto = await response.Content.ReadFromJsonAsync<BuildDefinitionDto>(null, cancellationToken);
+            var definitionDto = await response.Content.ReadFromJsonAsync<BuildDefinitionDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return definitionDto;
         }
@@ -113,7 +114,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var definitionDto = await response.Content.ReadFromJsonAsync<BuildDefinitionDto>(null, cancellationToken);
+            var definitionDto = await response.Content.ReadFromJsonAsync<BuildDefinitionDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return definitionDto;
         }
@@ -125,7 +126,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(null, cancellationToken);
+            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return buildDto;
         }
@@ -137,7 +138,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(null, cancellationToken);
+            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return buildDto;
         }
@@ -149,7 +150,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var operationReferenceDto = await response.Content.ReadFromJsonAsync<OperationDto>(null, cancellationToken);
+            var operationReferenceDto = await response.Content.ReadFromJsonAsync<OperationDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return operationReferenceDto;
         }
@@ -161,7 +162,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var operationReferenceDto = await response.Content.ReadFromJsonAsync<OperationDto>(null, cancellationToken);
+            var operationReferenceDto = await response.Content.ReadFromJsonAsync<OperationDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return operationReferenceDto;
         }
@@ -173,7 +174,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var projectDto = await response.Content.ReadFromJsonAsync<ProjectDto>(null, cancellationToken);
+            var projectDto = await response.Content.ReadFromJsonAsync<ProjectDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return projectDto;
         }
@@ -185,7 +186,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var projectDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<ProjectDto>>>(null, cancellationToken);
+            var projectDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<ProjectDto>>>(JsonSerializerOptions.Default, cancellationToken);
 
             return projectDtos.Value;
         }
@@ -197,7 +198,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(null, cancellationToken);
+            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return buildDto;
         }
@@ -225,7 +226,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(null, cancellationToken);
+            var buildDto = await response.Content.ReadFromJsonAsync<BuildDto>(JsonSerializerOptions.Default, cancellationToken);
 
             return buildDto;
         }
@@ -237,7 +238,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var changeDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<ChangeDto>>>(null, cancellationToken);
+            var changeDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<ChangeDto>>>(JsonSerializerOptions.Default, cancellationToken);
 
             return changeDtos.Value;
         }
@@ -249,7 +250,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             request.Headers.Authorization = GetAuthZHeader();
 
             var response = await SendAsync(request, cancellationToken);
-            var workItemDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<WorkItemDto>>>(null, cancellationToken);
+            var workItemDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<WorkItemDto>>>(JsonSerializerOptions.Default, cancellationToken);
 
             return workItemDtos.Value;
         }
