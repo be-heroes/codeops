@@ -23,8 +23,8 @@ jobs:
         source-url: https://nuget.pkg.github.com/be-heroes/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - run: dotnet build BeHeroes.CodeOps.Abstractions
+    - run: dotnet build src/BeHeroes.CodeOps.Abstractions
     - name: Create the package
-      run: dotnet pack --configuration Release BeHeroes.CodeOps.Abstractions
+      run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Abstractions
     - name: Publish the package to GPR
-      run: dotnet nuget push BeHeroes.CodeOps.Abstractions/bin/Release/*.nupkg
+      run: dotnet nuget push src/BeHeroes.CodeOps.Abstractions/bin/Release/*.nupkg
