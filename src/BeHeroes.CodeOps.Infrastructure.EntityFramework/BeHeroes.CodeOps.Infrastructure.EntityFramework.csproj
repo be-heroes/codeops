@@ -4,6 +4,8 @@
       <TargetFramework>net7.0</TargetFramework>
       <ImplicitUsings>enable</ImplicitUsings>
       <Nullable>enable</Nullable>
+      <RepositoryUrl>https://github.com/be-heroes/code-ops</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
 	<ItemGroup>
@@ -12,11 +14,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+      	<PackageReference Include="BeHeroes.CodeOps.Abstractions" Version="1.0.0" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\BeHeroes.CodeOps.Abstractions\BeHeroes.CodeOps.Abstractions.csproj" />
-	</ItemGroup>
-
 
 </Project>

@@ -4,6 +4,8 @@
       <TargetFramework>net7.0</TargetFramework>
       <ImplicitUsings>enable</ImplicitUsings>
       <Nullable>enable</Nullable>
+      <RepositoryUrl>https://github.com/be-heroes/code-ops</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
