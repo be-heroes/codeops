@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.SimpleSystems.Parameter
 {
-    public sealed class AddOrUpdateParameterCommandHandler : AwsCommandHandler<AddOrUpdateParameterCommand, ParameterDto>
+    public sealed class AddOrUpdateParameterCommandHandler : AwsCommandHandler<AddOrUpdateParameterCommand, ParameterDto?>
     {
         public AddOrUpdateParameterCommandHandler(IAwsClientFactory awsClientFactory) : base(awsClientFactory)
         {
         }
 
-        public async override Task<ParameterDto> Handle(AddOrUpdateParameterCommand command, CancellationToken cancellationToken = default)
+        public async override Task<ParameterDto?> Handle(AddOrUpdateParameterCommand command, CancellationToken cancellationToken = default)
         {
             using var client = _awsClientFactory.Create<AmazonSimpleSystemsManagementClient>(command.AssumeProfile);
 
-            ParameterDto result = null;
+            ParameterDto? result = null;
 
             var request = new PutParameterRequest()
             {
@@ -50,7 +50,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.SimpleSyste
             }
             catch (AmazonServiceException e)
             {
-                throw new Exception(e.Message, e);
+                throw new AwsFacadeException(e.Message, e);
             }
 
             return result;

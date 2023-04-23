@@ -9,7 +9,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Cost
         [JsonPropertyName("accountIdentifier")]
         public string AccountIdentifier { get; init; }
 
-        public GetMonthlyTotalCostCommand(string accountIdentifier = default)
+        public GetMonthlyTotalCostCommand(string accountIdentifier)
         {
             AccountIdentifier = accountIdentifier;
         }

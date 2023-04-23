@@ -5,6 +5,6 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories
 {
     public interface IAwsClientFactory
     {
-        T Create<T>(IAwsProfile assumeProfile = default) where T : IAmazonService;
+        T Create<T>(IAwsProfile? assumeProfile = default) where T : IAmazonService;
     }
 }

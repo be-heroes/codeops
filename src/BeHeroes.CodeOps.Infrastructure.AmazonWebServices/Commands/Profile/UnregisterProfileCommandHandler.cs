@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Threading;
 using System.Threading.Tasks;
+using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Profile
 {
@@ -9,7 +10,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Profile
     {
         private readonly CredentialProfileStoreChain _credentialProfileStoreChain;
 
-        public UnregisterProfileCommandHandler(IOptions<AwsFacadeOptions> options)
+        public UnregisterProfileCommandHandler(IOptions<AwsFacadeOptions> options) : base(new AwsClientFactory(options))
         {
             _credentialProfileStoreChain = new CredentialProfileStoreChain(options.Value.ProfilesLocation);
         }

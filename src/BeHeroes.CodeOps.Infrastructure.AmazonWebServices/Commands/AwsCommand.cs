@@ -5,10 +5,15 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands
 {
     public abstract class AwsCommand<TResult> : ICommand<TResult>
     {
-        public IAwsProfile AssumeProfile
+        public IAwsProfile? AssumeProfile
         {
             get;
             init;
+        }
+
+        protected AwsCommand(IAwsProfile? awsProfile = default){
+            if(awsProfile != null)
+                AssumeProfile = awsProfile;
         }
     }
 }

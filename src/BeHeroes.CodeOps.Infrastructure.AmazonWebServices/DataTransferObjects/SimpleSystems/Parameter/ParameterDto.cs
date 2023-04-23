@@ -9,16 +9,16 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
         public long Version { get; set; }
 
         [JsonPropertyName("value")]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         [JsonPropertyName("paramType")]
-        public string ParamType { get; set; }
+        public string? ParamType { get; set; }
 
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonPropertyName("tags")]
-        public KeyValuePair<string, string>[] Tags { get; set; }
+        public KeyValuePair<string, string>[]? Tags { get; set; }
 
         [JsonPropertyName("overwrite")]
         public bool Overwrite { get; set; }

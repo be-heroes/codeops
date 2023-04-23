@@ -13,7 +13,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Profile
 
         internal string SecretKey { get; init; }
 
-        public RegisterProfileCommand(IAwsProfile profile, string accessKey = default, string secretKey = default)
+        public RegisterProfileCommand(IAwsProfile profile, string accessKey, string secretKey)
         {
             Profile = profile;
             AccessKey = accessKey;

@@ -6,9 +6,9 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
     public class CostDto
     {
         [JsonPropertyName("dimensionValueAttributes")]
-        public IEnumerable<DimensionValueAttributeDto> DimensionValueAttributes { get; set; }
+        public IEnumerable<DimensionValueAttributeDto>? DimensionValueAttributes { get; set; }
 
         [JsonPropertyName("resultByTime")]
-        public IEnumerable<ResultByTimeDto> ResultsByTime { get; set; }
+        public IEnumerable<ResultByTimeDto>? ResultsByTime { get; set; }
     }
 }

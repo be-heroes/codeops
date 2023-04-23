@@ -7,10 +7,10 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
     public class ResultByTimeDto
     {
         [JsonPropertyName("groups")]
-        public IEnumerable<GroupDto> Groups { get; set; }
+        public IEnumerable<GroupDto>? Groups { get; set; }
 
         [JsonPropertyName("total")]
-        public IEnumerable<KeyValuePair<string, MetricValueDto>> Total { get; set; }
+        public IEnumerable<KeyValuePair<string, MetricValueDto>>? Total { get; set; }
 
         [JsonPropertyName("startDate")]
         public DateTime StartDate { get; set; }

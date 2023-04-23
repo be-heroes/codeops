@@ -5,9 +5,9 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
     public class MetricValueDto
     {
         [JsonPropertyName("amount")]
-        public string Amount { get; set; }
+        public string? Amount { get; set; }
 
         [JsonPropertyName("unit")]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
     }
 }

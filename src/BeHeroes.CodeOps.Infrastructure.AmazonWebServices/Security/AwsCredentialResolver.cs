@@ -19,7 +19,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Security
             _credentialProfileStoreChain = new CredentialProfileStoreChain(profilesLocation);
         }
 
-        public AwsCredentials Resolve(IAwsProfile profile = default)
+        public AwsCredentials? Resolve(IAwsProfile? profile = default)
         {
             if (string.IsNullOrEmpty(profile?.Name))
             {

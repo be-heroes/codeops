@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <OutputType>Library</OutputType>
-        <LangVersion>9.0</LangVersion>
+      <TargetFramework>net7.0</TargetFramework>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AWSSDK.CostExplorer" Version="3.7.3.9" />
-      <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.1" />
-      <PackageReference Include="AWSSDK.IdentityManagement" Version="3.7.2.41" />
-      <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.1.51" />
-      <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.5.7" />
-      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+      <PackageReference Include="AWSSDK.CostExplorer" Version="3.7.103.81" />
+      <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.5" />
+      <PackageReference Include="AWSSDK.IdentityManagement" Version="3.7.100.118" />
+      <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.101.52" />
+      <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.104.20" />
+      <PackageReference Include="MediatR" Version="12.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     </ItemGroup>
 
 	<ItemGroup>

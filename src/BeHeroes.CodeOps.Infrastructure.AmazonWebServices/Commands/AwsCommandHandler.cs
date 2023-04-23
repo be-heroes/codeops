@@ -9,7 +9,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands
     {
         protected readonly IAwsClientFactory _awsClientFactory;
 
-        protected AwsCommandHandler(IAwsClientFactory awsClientFactory = default)
+        protected AwsCommandHandler(IAwsClientFactory awsClientFactory)
         {
             _awsClientFactory = awsClientFactory;
         }

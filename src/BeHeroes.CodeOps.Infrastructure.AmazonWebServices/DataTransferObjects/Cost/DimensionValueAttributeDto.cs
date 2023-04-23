@@ -6,9 +6,9 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
     public class DimensionValueAttributeDto
     {
         [JsonPropertyName("attributes")]
-        public IEnumerable<KeyValuePair<string, string>> Attributes { get; set; }
+        public IEnumerable<KeyValuePair<string, string>>? Attributes { get; set; } = null;
 
         [JsonPropertyName("value")]
-        public string Value { get; set; }
+        public string Value { get; set; } = string.Empty;
     }
 }

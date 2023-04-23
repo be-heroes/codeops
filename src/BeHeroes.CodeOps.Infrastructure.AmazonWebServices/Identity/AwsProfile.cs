@@ -7,5 +7,12 @@
         public string Name { get; init; }
 
         public string RoleArn { get; init; }
+        
+        public AwsProfile(string sourceProfile, string name, string roleArn)
+        {
+            SourceProfile = sourceProfile;
+            Name = name;
+            RoleArn = roleArn;
+        }
     }
 }

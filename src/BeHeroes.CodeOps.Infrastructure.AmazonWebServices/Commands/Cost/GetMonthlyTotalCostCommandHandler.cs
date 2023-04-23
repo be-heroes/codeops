@@ -24,7 +24,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Cost
 
             try
             {
-                GetCostAndUsageResponse resp = null;
+                GetCostAndUsageResponse? resp = null;
 
                 do
                 {

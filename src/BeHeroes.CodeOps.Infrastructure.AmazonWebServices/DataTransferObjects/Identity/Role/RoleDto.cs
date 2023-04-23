@@ -5,24 +5,24 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
     public class RoleDto
     {
         [JsonPropertyName("arn")]
-        public string Arn { get; set; }
+        public string? Arn { get; set; }
 
         [JsonPropertyName("assumeRolePolicyDocument")]
-        public string AssumeRolePolicyDocument { get; set; }
+        public string? AssumeRolePolicyDocument { get; set; }
 
         [JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [JsonPropertyName("maxSessionDuration")]
         public int MaxSessionDuration { get; set; }
 
         [JsonPropertyName("path")]
-        public string Path { get; set; }
+        public string? Path { get; set; }
 
         [JsonPropertyName("roleId")]
-        public string RoleId { get; set; }
+        public string? RoleId { get; set; }
 
         [JsonPropertyName("roleName")]
-        public string RoleName { get; set; }
+        public string? RoleName { get; set; }
     }
 }

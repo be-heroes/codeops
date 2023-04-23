@@ -16,9 +16,9 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Ro
         public string Description { get; init; }
 
         [JsonPropertyName("tags")]
-        public IEnumerable<KeyValuePair<string, string>> Tags { get; }
+        public IEnumerable<KeyValuePair<string, string>>? Tags { get; }
 
-        public CreateRoleCommand(string roleName, string policyDocument, string description = default, IEnumerable<KeyValuePair<string, string>> tags = default)
+        public CreateRoleCommand(string roleName, string policyDocument, string description, IEnumerable<KeyValuePair<string, string>>? tags = default)
         {
             RoleName = roleName;
             PolicyDocument = policyDocument;

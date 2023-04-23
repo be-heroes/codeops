@@ -16,7 +16,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices
 
             //Package dependencies
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddFacade(configuration);
         }
 

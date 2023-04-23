@@ -9,9 +9,9 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Ro
         public string RoleName { get; init; }
 
         [JsonPropertyName("description")]
-        public string Description { get; init; }
+        public string? Description { get; init; }
 
-        public UpdateRoleCommand(string roleName, string description = default)
+        public UpdateRoleCommand(string roleName, string? description = default)
         {
             RoleName = roleName;
             Description = description;
