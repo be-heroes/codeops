@@ -27,4 +27,4 @@ jobs:
     - name: Create the package
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Abstractions
     - name: Publish the package to GPR
-      run: dotnet nuget push src/BeHeroes.CodeOps.Abstractions/bin/Release/*.nupkg
+      run: dotnet nuget push -k $NUGET_AUTH_TOKEN src/BeHeroes.CodeOps.Abstractions/bin/Release/*.nupkg
