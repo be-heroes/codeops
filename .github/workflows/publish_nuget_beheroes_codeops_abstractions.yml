@@ -16,15 +16,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET
+    - name: Setup
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x        
-        source-url: https://nuget.pkg.github.com/be-heroes/index.json
+        # Authenticates packages to push to GPR
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - run: dotnet build src/BeHeroes.CodeOps.Abstractions
-    - name: Create the package
+        NUGET_AUTH_TOKEN: '%NUGET_AUTH_TOKEN%'
+    - name: Build
+      run: dotnet build src/BeHeroes.CodeOps.Abstractions
+    - name: Pack
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Abstractions
-    - name: Publish the package to GPR
-      run: dotnet nuget push -k $NUGET_AUTH_TOKEN src/BeHeroes.CodeOps.Abstractions/bin/Release/*.nupkg
+    - name: PushGithub
+      # The github token is automatically being pulled from the workflow
+      run: dotnet nuget push **/*.nupkg --no-symbols --skip-duplicate
+      env:
+        NUGET_AUTH_TOKEN: ${{ github.token }}
