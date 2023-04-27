@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices
+﻿namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices
 {
     public sealed class AwsFacadeException : Exception
     {

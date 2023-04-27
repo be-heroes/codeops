@@ -1,14 +1,17 @@
-﻿namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Identity
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Identity
 {
     public sealed class AwsProfile : IAwsProfile
     {
-        public string SourceProfile { get; init; }
+        public required string Name { get; init; }
 
-        public string Name { get; init; }
+        public required string SourceProfile { get; init; }
 
-        public string RoleArn { get; init; }
+        public required string RoleArn { get; init; }
         
-        public AwsProfile(string sourceProfile, string name, string roleArn)
+        [SetsRequiredMembers]
+        public AwsProfile(string name, string sourceProfile, string roleArn)
         {
             SourceProfile = sourceProfile;
             Name = name;

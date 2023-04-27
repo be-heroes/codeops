@@ -1,15 +1,13 @@
-﻿using BeHeroes.CodeOps.Abstractions.Data;
-using MediatR;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Reflection;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
+
+using BeHeroes.CodeOps.Abstractions.Data;
+
+using MediatR;
 
 namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
 {
@@ -41,29 +39,31 @@ namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
 
             var configurationTypes = ModelConfigurationAssembly.GetTypes().Where(t => t.GetInterface("IEntityTypeConfiguration`1") != null);
 
+            if(!configurationTypes.Any()) return;
+
             foreach (var configurationType in configurationTypes)
             {
-                var entityType = configurationType.GetInterface("IEntityTypeConfiguration`1").GenericTypeArguments.SingleOrDefault();
+                if(configurationType == null)
+                    continue;
+
+                var configurationCtorArgs = new Dictionary<Type, object>();
+                var entityType = configurationType.GetInterface("IEntityTypeConfiguration`1")?.GenericTypeArguments.SingleOrDefault();
                 var viewData = _seedData?.SingleOrDefault(v => v.Key == entityType).Value;
-                var configurationCtorArgTypes = new List<Type>();
-                var configurationCtorArgs = new List<object>();
 
                 if (viewData != null)
                 {
-                    configurationCtorArgTypes.Add(viewData.GetType());
-                    configurationCtorArgs.Add(viewData);
+                    configurationCtorArgs.Add(viewData.GetType(), viewData);
                 }
 
-                var configurationCtor = configurationType.GetConstructor(BindingFlags.Public | BindingFlags.Instance, null, configurationCtorArgTypes.ToArray(), null);
+                var configurationCtor = configurationType.GetConstructor(BindingFlags.Public | BindingFlags.Instance, null, configurationCtorArgs.Keys.ToArray(), null);
+                dynamic? entityConfiguration = configurationCtor?.Invoke(configurationCtorArgs.Values.ToArray());
 
-                dynamic configuration = configurationCtor?.Invoke(configurationCtorArgs.ToArray());
-
-                if (configuration == null)
+                if (entityConfiguration == null)
                 {
                     throw new EntityContextException($"Could not find configuration for entity: ${entityType} in model configuration assembly: ${ModelConfigurationAssembly}");
                 }
 
-                modelBuilder.ApplyConfiguration(configuration);
+                modelBuilder.ApplyConfiguration(entityConfiguration);
             }
         }
 
@@ -75,7 +75,8 @@ namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
             // side effects from the domain event handlers which are using the same DbContext with "InstancePerLifetimeScope" or "scoped" lifetime
             // B) Right AFTER committing data (EF SaveChanges) into the DB will make multiple transactions. 
             // You will need to handle eventual consistency and compensatory actions in case of failures in any of the Handlers.
-            await _mediator?.DispatchDomainEventsAsync(this);
+            if(_mediator != null)
+                await _mediator.DispatchDomainEventsAsync(this);
 
             // After executing this line all the changes (from the Command Handler and Domain Event Handlers) 
             // performed through the DbContext will be committed

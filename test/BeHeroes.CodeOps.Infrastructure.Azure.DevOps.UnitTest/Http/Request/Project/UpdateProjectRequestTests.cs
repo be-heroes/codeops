@@ -41,7 +41,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.UnitTest.Http.Request.Pro
             Assert.Equal("6.0", sut.ApiVersion);
             Assert.Equal(HttpMethod.Patch, sut.Method);
 
-            Assert.Equal($"https://dev.azure.com/my-org/_apis/projects/{Guid.Empty}?api-version=6.0", sut.RequestUri.AbsoluteUri);
+            Assert.Equal($"https://dev.azure.com/my-org/_apis/projects/?api-version=6.0", sut.RequestUri.AbsoluteUri);
             Assert.True(await new StringContent(JsonSerializer.Serialize(new ProjectDto())).ReadAsStringAsync() == await sut.Content.ReadAsStringAsync());
         }
     }

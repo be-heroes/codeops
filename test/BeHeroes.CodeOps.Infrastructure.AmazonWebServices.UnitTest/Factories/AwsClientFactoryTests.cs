@@ -11,8 +11,8 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.UnitTest.Factories
     {
         private readonly IOptions<AwsFacadeOptions> _options = Options.Create(new AwsFacadeOptions()
         {
-            Region = "eu-central-1",
-            AccessKey = "unit_test_access_key",
+            Region = "eu-central-1", 
+            AccessKey = "unit_test_access_key", 
             SecretKey = "unit_test_secret_key"
         });
 

@@ -22,7 +22,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.IntegrationTest.Comm
             var facade = _fixture.Facade;
 
             var roleName = Guid.NewGuid().ToString();
-            var command = new CreateRoleCommand(roleName, "{\"Version\": \"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRole\", \"Principal\":{ \"AWS\": \"642375522597\" }}]}");
+            var command = new CreateRoleCommand(roleName, "{\"Version\": \"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRole\", \"Principal\":{ \"AWS\": \"642375522597\" }}]}", "DESCRIPTION");
 
             //Act
             var result = await facade.Execute(command);

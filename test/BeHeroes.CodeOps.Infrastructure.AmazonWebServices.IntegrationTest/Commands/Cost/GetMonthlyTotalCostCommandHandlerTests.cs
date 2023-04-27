@@ -35,10 +35,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.IntegrationTest.Comm
         {
             //Arrange
             var facade = _fixture.Facade;
-            var command = new GetMonthlyTotalCostCommand()
-            {
-                AccountIdentifier = "642375522597"
-            };
+            var command = new GetMonthlyTotalCostCommand("642375522597");
 
             //Act
             var result = await facade.Execute(command);
@@ -53,10 +50,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.IntegrationTest.Comm
         {
             //Arrange
             var facade = _fixture.Facade;
-            var command = new GetMonthlyTotalCostCommand()
-            {
-                AccountIdentifier = "571914469803"
-            };
+            var command = new GetMonthlyTotalCostCommand("571914469803");
 
             //Act
             var result = await facade.Execute(command);

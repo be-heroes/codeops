@@ -1,7 +1,8 @@
-﻿using Amazon.Runtime.CredentialManagement;
+﻿using Microsoft.Extensions.Options;
+
+using Amazon.Runtime.CredentialManagement;
+
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Identity;
-using Microsoft.Extensions.Options;
-using System;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Security
 {
@@ -9,26 +10,21 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Security
     {
         private readonly CredentialProfileStoreChain _credentialProfileStoreChain;
 
-        public AwsCredentialResolver(IOptions<AwsFacadeOptions> options)
+        public AwsCredentialResolver(IOptions<AwsFacadeOptions> options) : this(options.Value.ProfilesLocation)
         {
-            _credentialProfileStoreChain = new CredentialProfileStoreChain(options.Value.ProfilesLocation);
+            
         }
 
-        public AwsCredentialResolver(string profilesLocation)
+        public AwsCredentialResolver(string? profilesLocation)
         {
-            _credentialProfileStoreChain = new CredentialProfileStoreChain(profilesLocation);
+            _credentialProfileStoreChain = !string.IsNullOrEmpty(profilesLocation) ? new CredentialProfileStoreChain(profilesLocation) : new CredentialProfileStoreChain();
         }
 
         public AwsCredentials? Resolve(IAwsProfile? profile = default)
         {
-            if (string.IsNullOrEmpty(profile?.Name))
+            if (string.IsNullOrEmpty(profile?.Name) || !_credentialProfileStoreChain.TryGetAWSCredentials(profile?.Name, out var credentialsHandle))
             {
                 return null;
-            }
-
-            if (!_credentialProfileStoreChain.TryGetAWSCredentials(profile?.Name, out var credentialsHandle))
-            {
-                throw new AwsFacadeException($"Failed to retrieve credentials for profile: {profile?.Name}");
             }
 
             return (AwsCredentials)credentialsHandle.GetCredentials();

@@ -5,9 +5,9 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Share
     public sealed class EnvironmentDto : AdoDto
     {
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonPropertyName("status")]
-        public string Status { get; set; }
+        public string? Status { get; set; }
     }
 }

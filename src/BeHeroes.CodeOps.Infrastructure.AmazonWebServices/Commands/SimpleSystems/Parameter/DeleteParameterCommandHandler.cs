@@ -15,7 +15,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.SimpleSyste
 
         public async override Task<Task> Handle(DeleteParameterCommand command, CancellationToken cancellationToken = default)
         {
-            using var client = _awsClientFactory.Create<AmazonSimpleSystemsManagementClient>(command.AssumeProfile);
+            using var client = _awsClientFactory.Create<AmazonSimpleSystemsManagementClient>(command.Impersonate);
 
             var request = new DeleteParameterRequest
             {

@@ -7,7 +7,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build
 {
     public sealed class UpdateBuildDefinitionRequest : ApiRequest
     {
-        public UpdateBuildDefinitionRequest(string organization, string project, BuildDefinitionDto definition) : this(organization, project, definition.Id)
+        public UpdateBuildDefinitionRequest(string organization, string project, BuildDefinitionDto definition) : this(organization, project, definition.Id ?? 0)
         {
             Content = new StringContent(JsonSerializer.Serialize(definition));
         }

@@ -1,10 +1,10 @@
-﻿using BeHeroes.CodeOps.Abstractions.Commands;
+﻿using Microsoft.Extensions.Options;
+
+using BeHeroes.CodeOps.Abstractions.Commands;
 using BeHeroes.CodeOps.Abstractions.Facade;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Profile;
+
 using MediatR;
-using Microsoft.Extensions.Options;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices
 {

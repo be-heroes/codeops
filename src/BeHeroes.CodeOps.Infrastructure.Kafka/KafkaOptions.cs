@@ -6,9 +6,9 @@ namespace BeHeroes.CodeOps.Infrastructure.Kafka
     {
         public const string Kafka = "Kafka";
 
-        public IDictionary<string, string> Configuration { get; set; }
+        public IDictionary<string, string>? Configuration { get; set; }
 
-        public IEnumerable<string> Topics { get; set; }
+        public IEnumerable<string>? Topics { get; set; }
 
         public bool EnablePartitionEof { get; set; } = false;
 

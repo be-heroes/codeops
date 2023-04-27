@@ -27,9 +27,9 @@ namespace BeHeroes.CodeOps.Infrastructure.Kafka
             {
                 var logger = p.GetService<ILogger<IProducer<string, IIntegrationEvent>>>();
                 var kafkaOptions = p.GetService<IOptions<KafkaOptions>>();
-                var producerBuilder = new ProducerBuilder<string, IIntegrationEvent>(kafkaOptions.Value.Configuration);
-                var producer = producerBuilder.SetErrorHandler((_, e) => logger.LogError($"Error: {e?.Reason}", e))
-                                            .SetStatisticsHandler((_, json) => logger.LogDebug($"Statistics: {json}"))
+                var producerBuilder = new ProducerBuilder<string, IIntegrationEvent>(kafkaOptions?.Value.Configuration);
+                var producer = producerBuilder.SetErrorHandler((_, e) => logger?.LogError($"Error: {e?.Reason}", e))
+                                            .SetStatisticsHandler((_, json) => logger?.LogDebug($"Statistics: {json}"))
                                             .SetValueSerializer(new DefaultValueSerializer<IIntegrationEvent>())
                                             .Build();
 
@@ -43,10 +43,10 @@ namespace BeHeroes.CodeOps.Infrastructure.Kafka
             {
                 var logger = p.GetService<ILogger<KafkaConsumerService>>();
                 var kafkaOptions = p.GetService<IOptions<KafkaOptions>>();
-                var consumerConfig = new ConsumerConfig(kafkaOptions.Value.Configuration)
+                var consumerConfig = new ConsumerConfig(kafkaOptions?.Value.Configuration)
                 {
-                    EnablePartitionEof = kafkaOptions.Value.EnablePartitionEof,
-                    StatisticsIntervalMs = kafkaOptions.Value.StatisticsIntervalMs
+                    EnablePartitionEof = kafkaOptions?.Value.EnablePartitionEof,
+                    StatisticsIntervalMs = kafkaOptions?.Value.StatisticsIntervalMs
                 };
                 var consumerBuilder = new ConsumerBuilder<string, string>(consumerConfig);
                 var consumer = consumerBuilder

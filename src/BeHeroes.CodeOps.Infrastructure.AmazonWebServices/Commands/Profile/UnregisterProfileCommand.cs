@@ -1,13 +1,14 @@
 ﻿using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Profile
 {
-    public sealed class UnregisterProfileCommand : AwsCommand<Task>
+    public sealed record UnregisterProfileCommand : AwsCommand<Task>
     {
         [JsonPropertyName("profileName")]
-        public string ProfileName { get; init; }
+        public required string ProfileName { get; init; }
 
+        [SetsRequiredMembers]
         public UnregisterProfileCommand(string profileName)
         {
             ProfileName = profileName;

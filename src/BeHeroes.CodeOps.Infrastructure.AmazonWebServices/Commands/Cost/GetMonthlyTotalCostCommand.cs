@@ -1,15 +1,17 @@
-﻿using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.Cost;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using System.Diagnostics.CodeAnalysis;
+
+using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.Cost;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Cost
 {
-    public sealed class GetMonthlyTotalCostCommand : AwsCommand<IEnumerable<CostDto>>
+    public sealed record GetMonthlyTotalCostCommand : AwsCommand<IEnumerable<CostDto>>
     {
         [JsonPropertyName("accountIdentifier")]
-        public string AccountIdentifier { get; init; }
+        public string? AccountIdentifier { get; init; }
 
-        public GetMonthlyTotalCostCommand(string accountIdentifier)
+        [SetsRequiredMembers]
+        public GetMonthlyTotalCostCommand(string? accountIdentifier = default)
         {
             AccountIdentifier = accountIdentifier;
         }

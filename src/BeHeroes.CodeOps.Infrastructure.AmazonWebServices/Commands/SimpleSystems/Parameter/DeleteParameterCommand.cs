@@ -1,13 +1,14 @@
 ﻿using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.SimpleSystems.Parameter
 {
-    public sealed class DeleteParameterCommand : AwsCommand<Task>
+    public sealed record DeleteParameterCommand : AwsCommand<Task>
     {
         [JsonPropertyName("name")]
-        public string Name { get; init; }
+        public required string Name { get; init; }
 
+        [SetsRequiredMembers]
         public DeleteParameterCommand(string name)
         {
             if (name.EndsWith("/"))

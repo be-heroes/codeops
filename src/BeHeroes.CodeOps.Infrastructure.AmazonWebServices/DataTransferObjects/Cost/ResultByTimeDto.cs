@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.Cost
@@ -13,12 +11,12 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
         public IEnumerable<KeyValuePair<string, MetricValueDto>>? Total { get; set; }
 
         [JsonPropertyName("startDate")]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [JsonPropertyName("endDate")]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [JsonPropertyName("estimated")]
-        public bool Estimated { get; set; }
+        public bool? Estimated { get; set; }
     }
 }

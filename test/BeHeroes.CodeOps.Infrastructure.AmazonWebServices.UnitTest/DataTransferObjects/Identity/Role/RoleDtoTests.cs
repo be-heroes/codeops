@@ -1,5 +1,6 @@
 ﻿using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.Identity.Role;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Xunit;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.UnitTest.Identity.Policy.Role
@@ -35,7 +36,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.UnitTest.Identity.Po
             };
 
             //Act
-            var payload = JsonSerializer.Serialize(sut, new JsonSerializerOptions { IgnoreNullValues = true });
+            var payload = JsonSerializer.Serialize(sut, new JsonSerializerOptions { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
 
             //Assert
             Assert.NotNull(JsonDocument.Parse(payload));

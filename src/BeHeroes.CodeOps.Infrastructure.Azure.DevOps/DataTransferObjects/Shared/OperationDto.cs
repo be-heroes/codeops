@@ -5,12 +5,12 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Share
     public sealed class OperationDto : AdoDto
     {
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [JsonPropertyName("pluginId")]
-        public string PluginId { get; set; }
+        public string? PluginId { get; set; }
 
         [JsonPropertyName("url")]
-        public string Url { get; set; }
+        public string? Url { get; set; }
     }
 }

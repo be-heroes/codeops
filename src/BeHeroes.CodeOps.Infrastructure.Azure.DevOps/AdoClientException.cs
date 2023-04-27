@@ -7,11 +7,11 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
         public AdoClientException()
         { }
 
-        public AdoClientException(string message)
+        public AdoClientException(string? message)
             : base(message)
         { }
 
-        public AdoClientException(string message, Exception innerException)
+        public AdoClientException(string? message, Exception? innerException)
             : base(message, innerException)
         { }
     }

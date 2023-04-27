@@ -16,9 +16,6 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.IntegrationTest.Fixt
 
             services.AddAmazonWebServices(_configFixture.Configuration);
 
-            services.AddTransient<ServiceFactory>(p => p.GetService);
-            services.AddSingleton<IMediator>(p => new Mediator(p.GetService<ServiceFactory>()));
-
             Provider = services.BuildServiceProvider();
         }
 

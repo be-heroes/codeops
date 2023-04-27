@@ -1,15 +1,17 @@
 ﻿using Amazon.Runtime;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Security
 {
-    public sealed class AwsCredentials : IAwsCredentials
+    public sealed record AwsCredentials : IAwsCredentials
     {
-        public string AccessKey { get; init; }
+        public required string AccessKey { get; init; }
 
-        public string SecretKey { get; init; }
+        public required string SecretKey { get; init; }
 
-        public string Token { get; init; }
+        public required string Token { get; init; }
 
+        [SetsRequiredMembers]
         public AwsCredentials(string accessKey, string secretKey, string token)
         {
             AccessKey = accessKey;

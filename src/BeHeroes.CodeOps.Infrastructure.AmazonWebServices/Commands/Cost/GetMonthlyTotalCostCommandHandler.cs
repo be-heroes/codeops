@@ -1,13 +1,9 @@
 ﻿using Amazon.CostExplorer;
 using Amazon.CostExplorer.Model;
 using Amazon.Runtime;
+
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.Cost;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Cost
 {
@@ -20,7 +16,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Cost
         public async override Task<IEnumerable<CostDto>> Handle(GetMonthlyTotalCostCommand command, CancellationToken cancellationToken = default)
         {
             var result = new List<CostDto>();
-            using var client = _awsClientFactory.Create<AmazonCostExplorerClient>(command.AssumeProfile);
+            using var client = _awsClientFactory.Create<AmazonCostExplorerClient>(command.Impersonate);
 
             try
             {

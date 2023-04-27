@@ -1,13 +1,14 @@
 ﻿using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Policy
 {
-    public sealed class DeletePolicyCommand : AwsCommand<Task>
+    public sealed record DeletePolicyCommand : AwsCommand<Task>
     {
         [JsonPropertyName("policyArn")]
-        public string PolicyArn { get; init; }
+        public required string PolicyArn { get; init; }
 
+        [SetsRequiredMembers]
         public DeletePolicyCommand(string policyArn)
         {
             PolicyArn = policyArn;

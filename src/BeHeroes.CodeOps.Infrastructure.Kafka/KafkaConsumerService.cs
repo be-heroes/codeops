@@ -1,22 +1,21 @@
-﻿using BeHeroes.CodeOps.Abstractions.Strategies;
-using Confluent.Kafka;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+
+using BeHeroes.CodeOps.Abstractions.Strategies;
+
+using Confluent.Kafka;
 
 namespace BeHeroes.CodeOps.Infrastructure.Kafka
 {
     public class KafkaConsumerService : BackgroundService
     {
-        protected readonly ILogger<KafkaConsumerService> _logger;
+        protected readonly ILogger<KafkaConsumerService>? _logger;
         protected readonly IServiceScopeFactory _scopeFactory;
         protected readonly IOptions<KafkaOptions> _options;
 
-        public KafkaConsumerService(IOptions<KafkaOptions> options, IServiceScopeFactory scopeFactory, ILogger<KafkaConsumerService> logger = default)
+        public KafkaConsumerService(IOptions<KafkaOptions> options, IServiceScopeFactory scopeFactory, ILogger<KafkaConsumerService>? logger = default)
         {
             _options = options ?? throw new ArgumentException(null, nameof(options));
             _scopeFactory = scopeFactory ?? throw new ArgumentException(null, nameof(scopeFactory));

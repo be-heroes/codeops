@@ -6,7 +6,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
     public class ParameterDto
     {
         [JsonPropertyName("version")]
-        public long Version { get; set; }
+        public long? Version { get; set; }
 
         [JsonPropertyName("value")]
         public string? Value { get; set; }
@@ -21,6 +21,6 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
         public KeyValuePair<string, string>[]? Tags { get; set; }
 
         [JsonPropertyName("overwrite")]
-        public bool Overwrite { get; set; }
+        public bool? Overwrite { get; set; }
     }
 }

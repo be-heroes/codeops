@@ -1,18 +1,20 @@
-﻿using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Identity;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using System.Diagnostics.CodeAnalysis;
+
+using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Identity;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Profile
 {
-    public sealed class RegisterProfileCommand : AwsCommand<Task>
+    public sealed record RegisterProfileCommand : AwsCommand<Task>
     {
         [JsonPropertyName("profile")]
-        public IAwsProfile Profile { get; init; }
+        public required IAwsProfile Profile { get; init; }
 
         internal string AccessKey { get; init; }
 
         internal string SecretKey { get; init; }
 
+        [SetsRequiredMembers]
         public RegisterProfileCommand(IAwsProfile profile, string accessKey, string secretKey)
         {
             Profile = profile;

@@ -18,7 +18,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.SimpleSyste
 
         public async override Task<ParameterDto?> Handle(AddOrUpdateParameterCommand command, CancellationToken cancellationToken = default)
         {
-            using var client = _awsClientFactory.Create<AmazonSimpleSystemsManagementClient>(command.AssumeProfile);
+            using var client = _awsClientFactory.Create<AmazonSimpleSystemsManagementClient>(command.Impersonate);
 
             ParameterDto? result = null;
 
@@ -27,7 +27,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.SimpleSyste
                 Name = command.Parameter.Name,
                 Value = command.Parameter.Value,
                 Type = command.Parameter.ParamType,
-                Overwrite = command.Parameter.Overwrite,
+                Overwrite = command.Parameter.Overwrite ?? false,
                 Tags = command.Parameter.Tags?.Select(kv => new Tag { Key = kv.Key, Value = kv.Value }).ToList()
             };
 

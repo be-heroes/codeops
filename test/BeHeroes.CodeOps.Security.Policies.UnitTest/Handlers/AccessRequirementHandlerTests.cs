@@ -9,11 +9,11 @@ namespace BeHeroes.CodeOps.Security.Policies.UnitTest.Handlers
     public class AccessRequirementHandlerTests
     {
         [Fact]
-        public void CanHandleDfdsAccessRequirements()
+        public void CanHandleAccessRequirements()
         {
             //Arrange
             var fakeRequirements = new AccessRequirement[] { new ExecuteAccessRequirement(), new ReadAccessRequirement(), new WriteAccessRequirement() };
-            var fakeIdentity = new ClaimsIdentity(new[] { new Claim("dfds.access", "dfds.all.execute"), new Claim("dfds.access", "dfds.all.read"), new Claim("dfds.access", "dfds.all.write") });
+            var fakeIdentity = new ClaimsIdentity(new[] { new Claim("beheroes.access", "beheroes.all.execute"), new Claim("beheroes.access", "beheroes.all.read"), new Claim("beheroes.access", "beheroes.all.write") });
             var fakePrincipal = new ClaimsPrincipal(fakeIdentity);
             var fakeAuthorizationHandlerContext = new AuthorizationHandlerContext(fakeRequirements, fakePrincipal, null);
             var sut = new AccessRequirementHandler();

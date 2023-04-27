@@ -1,16 +1,17 @@
 ﻿using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Role
 {
-    public sealed class UpdateRoleCommand : AwsCommand<Task>
+    public sealed record UpdateRoleCommand : AwsCommand<Task>
     {
         [JsonPropertyName("roleName")]
-        public string RoleName { get; init; }
+        public required string RoleName { get; init; }
 
         [JsonPropertyName("description")]
         public string? Description { get; init; }
 
+        [SetsRequiredMembers]
         public UpdateRoleCommand(string roleName, string? description = default)
         {
             RoleName = roleName;

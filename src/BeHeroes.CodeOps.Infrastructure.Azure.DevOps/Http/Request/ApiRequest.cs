@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 
 namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request
 {
@@ -9,6 +8,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request
 
         protected ApiRequest()
         {
+            ApiVersion = string.Empty;
             Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
     }

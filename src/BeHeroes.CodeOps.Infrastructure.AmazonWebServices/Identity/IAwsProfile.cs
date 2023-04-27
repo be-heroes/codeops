@@ -2,11 +2,11 @@
 {
     public interface IAwsProfile
     {
-        string SourceProfile { get; }
-
         string Name { get; }
 
-        string RoleArn { get; }
+        string SourceProfile { get; }
+
+        string? RoleArn { get; }
     }
 
 }

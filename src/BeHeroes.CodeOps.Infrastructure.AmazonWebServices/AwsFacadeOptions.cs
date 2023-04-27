@@ -6,23 +6,14 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices
     {
         public const string AwsFacade = "AwsFacade";
 
-        public string Region { get; set; }
+        public string Region { get; set; } = "eu-central-1";
 
-        public string AccessKey { get; set; }
+        public string AccessKey { get; set; } = string.Empty;
 
-        public string SecretKey { get; set; }
+        public string SecretKey { get; set; } = string.Empty;
 
-        public string ProfilesLocation { get; set; }
+        public string ProfilesLocation { get; set; } = ".//awsfacade";
 
         public AwsProfile? Impersonate { get; set; }
-
-        public AwsFacadeOptions(string region, string accessKey, string secretKey, string profilesLocation, AwsProfile? impersonate)
-        {
-            Region = region;
-            AccessKey = accessKey;
-            SecretKey = secretKey;
-            ProfilesLocation = profilesLocation;
-            Impersonate = impersonate;
-        }
     }
 }

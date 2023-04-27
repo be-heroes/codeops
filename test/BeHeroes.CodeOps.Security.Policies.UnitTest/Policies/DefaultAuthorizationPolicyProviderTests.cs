@@ -17,10 +17,10 @@ namespace BeHeroes.CodeOps.Security.Policies.Policies
             var sut = new DefaultAuthorizationPolicyProvider(options);
 
             //Act
-            var readPolicy = await sut.GetPolicyAsync("dfds.all.read");
-            var writePolicy = await sut.GetPolicyAsync("dfds.all.write");
-            var executePolicy = await sut.GetPolicyAsync("dfds.all.execute");
-            var fullPolicy = await sut.GetPolicyAsync("dfds.all.full");
+            var readPolicy = await sut.GetPolicyAsync("beheroes.all.read");
+            var writePolicy = await sut.GetPolicyAsync("beheroes.all.write");
+            var executePolicy = await sut.GetPolicyAsync("beheroes.all.execute");
+            var fullPolicy = await sut.GetPolicyAsync("beheroes.all.full");
 
             //Assert
             Assert.Contains(readPolicy.AuthenticationSchemes, (schema) => schema == CookieAuthenticationDefaults.AuthenticationScheme);

@@ -1,6 +1,7 @@
 ﻿using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Build;
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Xunit;
 
 namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.UnitTest.DataTransferObjects.Build
@@ -35,7 +36,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.UnitTest.DataTransferObje
             };
 
             //Act
-            var payload = JsonSerializer.Serialize(sut, new JsonSerializerOptions { IgnoreNullValues = true });
+            var payload = JsonSerializer.Serialize(sut, new JsonSerializerOptions { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
 
             //Assert
             Assert.NotNull(JsonDocument.Parse(payload));

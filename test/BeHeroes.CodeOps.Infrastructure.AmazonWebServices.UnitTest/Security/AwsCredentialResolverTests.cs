@@ -26,9 +26,10 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.UnitTest.Security
         {
             //Arrange
             var sut = new AwsCredentialResolver(Directory.GetCurrentDirectory());
+            var profile = new AwsProfile("PROFILE", "PROFILE_NAME", "PROFILE_ARN");
 
             //Act
-            var creds = sut.Resolve(new AwsProfile());
+            var creds = sut.Resolve(profile);
 
             //Assert
             Assert.Null(creds);

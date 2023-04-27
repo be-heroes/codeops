@@ -7,7 +7,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Project
 {
     public sealed class UpdateProjectRequest : ApiRequest
     {
-        public UpdateProjectRequest(string organization, ProjectDto project) : this(organization, project.Id.ToString())
+        public UpdateProjectRequest(string organization, ProjectDto project) : this(organization, project.Id.ToString() ?? string.Empty)
         {
             Content = new StringContent(JsonSerializer.Serialize(project));
         }

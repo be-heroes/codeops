@@ -1,7 +1,5 @@
 ﻿using BeHeroes.CodeOps.Abstractions.Commands;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands
 {

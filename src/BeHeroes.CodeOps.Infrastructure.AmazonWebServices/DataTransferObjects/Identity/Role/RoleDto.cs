@@ -14,7 +14,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.
         public string? Description { get; set; }
 
         [JsonPropertyName("maxSessionDuration")]
-        public int MaxSessionDuration { get; set; }
+        public int? MaxSessionDuration { get; set; }
 
         [JsonPropertyName("path")]
         public string? Path { get; set; }

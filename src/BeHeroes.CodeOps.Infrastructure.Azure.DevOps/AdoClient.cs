@@ -1,4 +1,14 @@
-﻿using BeHeroes.CodeOps.Abstractions.Protocols.Http;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
+
+using Microsoft.Extensions.Options;
+
+using BeHeroes.CodeOps.Abstractions.Protocols.Http;
 using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Build;
 using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Profile;
 using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Project;
@@ -9,19 +19,6 @@ using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build.Definition
 using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Profile;
 using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Project;
 using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Release;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
 {
@@ -47,7 +44,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             }
         }
 
-        public async Task<ReleaseDto> GetRelease(string projectIdentifier, int releaseId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<ReleaseDto?> GetRelease(string projectIdentifier, int releaseId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetReleaseRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, releaseId);
 
@@ -59,7 +56,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return releaseDto;
         }
 
-        public async Task<ProfileDto> GetProfile(string profileIdentifier, CancellationToken cancellationToken = default)
+        public async Task<ProfileDto?> GetProfile(string profileIdentifier, CancellationToken cancellationToken = default)
         {
             var request = new GetProfileRequest(profileIdentifier);
 
@@ -71,7 +68,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return profileDto;
         }
 
-        public async Task<BuildDefinitionDto> UpdateBuildDefinition(string projectIdentifier, BuildDefinitionDto definition, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<BuildDefinitionDto?> UpdateBuildDefinition(string projectIdentifier, BuildDefinitionDto definition, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new UpdateBuildDefinitionRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, definition);
 
@@ -83,7 +80,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return definitionDto;
         }
 
-        public async Task<BuildDefinitionDto> GetBuildDefinition(string projectIdentifier, int definitionId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<BuildDefinitionDto?> GetBuildDefinition(string projectIdentifier, int definitionId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetBuildDefinitionRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, definitionId);
 
@@ -95,7 +92,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return definitionDto;
         }
 
-        public async Task<string> GetBuildDefinitionYaml(string projectIdentifier, int definitionId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<string?> GetBuildDefinitionYaml(string projectIdentifier, int definitionId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetBuildDefinitionYamlRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, definitionId);
 
@@ -107,7 +104,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return responseData;
         }
 
-        public async Task<BuildDefinitionDto> CreateBuildDefinition(string projectIdentifier, BuildDefinitionDto definition, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<BuildDefinitionDto?> CreateBuildDefinition(string projectIdentifier, BuildDefinitionDto definition, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new UpdateBuildDefinitionRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, definition);
 
@@ -119,7 +116,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return definitionDto;
         }
 
-        public async Task<BuildDto> QueueBuild(string projectIdentifier, BuildDefinitionDto definition, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<BuildDto?> QueueBuild(string projectIdentifier, BuildDefinitionDto definition, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new UpdateBuildDefinitionRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, definition);
 
@@ -131,7 +128,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return buildDto;
         }
 
-        public async Task<BuildDto> QueueBuild(string projectIdentifier, int definitionId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<BuildDto?> QueueBuild(string projectIdentifier, int definitionId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new QueueBuildRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, definitionId);
 
@@ -143,7 +140,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return buildDto;
         }
 
-        public async Task<OperationDto> CreateProject(ProjectDto project, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<OperationDto?> CreateProject(ProjectDto project, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new CreateProjectRequest(organization ?? _options.Value.DefaultOrganization, project);
 
@@ -155,7 +152,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return operationReferenceDto;
         }
 
-        public async Task<OperationDto> UpdateProject(ProjectDto project, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<OperationDto?> UpdateProject(ProjectDto project, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new UpdateProjectRequest(organization ?? _options.Value.DefaultOrganization, project);
 
@@ -167,7 +164,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return operationReferenceDto;
         }
 
-        public async Task<ProjectDto> GetProject(string projectIdentifier, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<ProjectDto?> GetProject(string projectIdentifier, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetProjectRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier);
 
@@ -179,7 +176,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return projectDto;
         }
 
-        public async Task<IEnumerable<ProjectDto>> GetProjects(string organization = default, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<ProjectDto>?> GetProjects(string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetProjectsRequest(organization ?? _options.Value.DefaultOrganization);
 
@@ -188,10 +185,10 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             var response = await SendAsync(request, cancellationToken);
             var projectDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<ProjectDto>>>(JsonSerializerOptions.Default, cancellationToken);
 
-            return projectDtos.Value;
+            return projectDtos?.Value;
         }
 
-        public async Task<BuildDto> GetBuild(string projectIdentifier, int buildId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<BuildDto?> GetBuild(string projectIdentifier, int buildId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetBuildRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, buildId);
 
@@ -203,7 +200,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return buildDto;
         }
 
-        public async Task DeleteBuild(string projectIdentifier, int buildId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task DeleteBuild(string projectIdentifier, int buildId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetBuildRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, buildId);
 
@@ -219,7 +216,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return;
         }
 
-        public async Task<BuildDto> UpdateBuild(string projectIdentifier, BuildDto build, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<BuildDto?> UpdateBuild(string projectIdentifier, BuildDto build, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new UpdateBuildRequest(organization ?? _options.Value.DefaultOrganization, projectIdentifier, build);
 
@@ -231,7 +228,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             return buildDto;
         }
 
-        public async Task<IEnumerable<ChangeDto>> GetBuildChanges(string projectIdentifier, int fromBuildId, int toBuildId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<ChangeDto>?> GetBuildChanges(string projectIdentifier, int fromBuildId, int toBuildId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetChangesBetweenBuilds(organization ?? _options.Value.DefaultOrganization, projectIdentifier, fromBuildId, toBuildId);
 
@@ -240,10 +237,10 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             var response = await SendAsync(request, cancellationToken);
             var changeDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<ChangeDto>>>(JsonSerializerOptions.Default, cancellationToken);
 
-            return changeDtos.Value;
+            return changeDtos?.Value;
         }
 
-        public async Task<IEnumerable<WorkItemDto>> GetBuildWorkItemRefs(string projectIdentifier, int buildId, string organization = default, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<WorkItemDto>?> GetBuildWorkItemRefs(string projectIdentifier, int buildId, string? organization = default, CancellationToken cancellationToken = default)
         {
             var request = new GetBuildWorkItemRefs(organization ?? _options.Value.DefaultOrganization, projectIdentifier, buildId);
 
@@ -252,13 +249,13 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             var response = await SendAsync(request, cancellationToken);
             var workItemDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<WorkItemDto>>>(JsonSerializerOptions.Default, cancellationToken);
 
-            return workItemDtos.Value;
+            return workItemDtos?.Value;
         }
 
         private class VstsListResult<T>
         {
             [JsonPropertyName("value")]
-            public T Value { get; set; }
+            public T? Value { get; set; }
         }
     }
 }

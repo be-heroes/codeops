@@ -1,9 +1,8 @@
-﻿using BeHeroes.CodeOps.Abstractions.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+
+using BeHeroes.CodeOps.Abstractions.Entities;
+
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
 {
@@ -11,18 +10,16 @@ namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
     {
         public static async Task DispatchDomainEventsAsync<T>(this IMediator mediator, T ctx) where T : DbContext
         {
-            var entities = ctx.ChangeTracker
+            var entitiesWithEvents = ctx.ChangeTracker
                 .Entries<IEntity>()
-                .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any());
-
-            var entityEntries = entities as EntityEntry<IEntity>[] ?? entities.ToArray();
-            var domainEvents = entityEntries
-                .SelectMany(x => x.Entity.DomainEvents)
+                .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any())
                 .ToList();
 
-            entityEntries.ToList().ForEach(entity => entity.Entity.ClearDomainEvents());
+            var unpublishedDomainEvents = entitiesWithEvents.SelectMany(x => x.Entity.DomainEvents ?? Array.Empty<Abstractions.Events.IDomainEvent>()).ToArray();
 
-            var tasks = domainEvents
+            entitiesWithEvents.ForEach(entity => entity.Entity.ClearDomainEvents());
+
+            var tasks = unpublishedDomainEvents
                 .Select(async (domainEvent) =>
                 {
                     await mediator.Publish(domainEvent);

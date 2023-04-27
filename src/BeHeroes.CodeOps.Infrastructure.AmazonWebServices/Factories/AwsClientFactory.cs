@@ -1,9 +1,10 @@
-﻿using Amazon;
+﻿using Microsoft.Extensions.Options;
+
+using Amazon;
 using Amazon.Runtime;
+
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Identity;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Security;
-using Microsoft.Extensions.Options;
-using BeHeroes.CodeOps.Infrastructure.AmazonWebServices;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories
 {

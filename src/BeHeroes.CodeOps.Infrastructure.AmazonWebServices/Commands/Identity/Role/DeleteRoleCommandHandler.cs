@@ -15,7 +15,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Ro
 
         public async override Task<Task> Handle(DeleteRoleCommand command, CancellationToken cancellationToken = default)
         {
-            using var client = _awsClientFactory.Create<AmazonIdentityManagementServiceClient>(command.AssumeProfile);
+            using var client = _awsClientFactory.Create<AmazonIdentityManagementServiceClient>(command.Impersonate);
 
             var request = new DeleteRoleRequest()
             {

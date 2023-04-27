@@ -7,7 +7,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Release
 {
     public sealed class UpdateReleaseRequest : ApiRequest
     {
-        public UpdateReleaseRequest(string organization, string project, ReleaseDto release) : this(organization, project, release.Id)
+        public UpdateReleaseRequest(string organization, string project, ReleaseDto release) : this(organization, project, release.Id ?? 0)
         {
             Content = new StringContent(JsonSerializer.Serialize(release));
         }

@@ -7,7 +7,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build
 {
     public sealed class QueueBuildRequest : ApiRequest
     {
-        public QueueBuildRequest(string organization, string project, BuildDefinitionDto definition) : this(organization, project, definition.Id)
+        public QueueBuildRequest(string organization, string project, BuildDefinitionDto definition) : this(organization, project, definition.Id ?? 0)
         {
             Content = new StringContent(JsonSerializer.Serialize(definition));
         }

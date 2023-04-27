@@ -23,7 +23,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Mapping.Converters
                 BuildDto build => _mapper.Map<IAggregateRoot>(build),
                 ProjectDto project => _mapper.Map<IAggregateRoot>(project),
                 ReleaseDto release => _mapper.Map<IAggregateRoot>(release),
-                _ => null,
+                _ => destination,
             };
         }
     }

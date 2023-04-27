@@ -8,7 +8,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Mapping.Converters
     {
         public AdoEvent Convert(JsonElement source, AdoEvent destination, ResolutionContext context)
         {
-            return JsonSerializer.Deserialize<AdoEvent>(source.GetRawText());
+            return JsonSerializer.Deserialize<AdoEvent>(source.GetRawText()) ?? destination;
         }
     }
 }

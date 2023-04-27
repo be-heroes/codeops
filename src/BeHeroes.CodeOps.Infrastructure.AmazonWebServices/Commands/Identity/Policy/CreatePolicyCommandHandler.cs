@@ -20,7 +20,7 @@ namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Po
 
         public async override Task<ManagedPolicyDto> Handle(CreatePolicyCommand command, CancellationToken cancellationToken = default)
         {
-            using var client = _awsClientFactory.Create<AmazonIdentityManagementServiceClient>(command.AssumeProfile);
+            using var client = _awsClientFactory.Create<AmazonIdentityManagementServiceClient>(command.Impersonate);
 
             var request = new CreatePolicyRequest()
             {
