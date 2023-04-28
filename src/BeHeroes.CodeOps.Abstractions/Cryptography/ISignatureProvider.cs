@@ -1,8 +1,10 @@
+using BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms;
+
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     public interface ISignatureProvider
     {
-        string Algorithm { get; }
+        IAlgorithm Algorithm { get; }
 
         byte[] Sign (byte[] input);
 

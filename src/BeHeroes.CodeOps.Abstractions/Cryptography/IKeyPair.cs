@@ -2,10 +2,8 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     public interface IKeyPair
     {
-        string Name { get; }
+        Key Private{ get; }
 
-        PrivateKey Private{ get; }
-
-        PublicKey Public { get; }
+        Key Public { get; }
     }
 }
