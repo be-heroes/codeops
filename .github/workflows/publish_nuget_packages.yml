@@ -33,3 +33,12 @@ jobs:
       run: dotnet nuget push src/BeHeroes.CodeOps.Abstractions/**/*.nupkg --no-symbols --skip-duplicate --source "github"
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build.BeHeroes.CodeOps.Infrastructure.AmazonWebServices
+      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices
+    - name: Pack.BeHeroes.CodeOps.Infrastructure.AmazonWebServices
+      run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices
+    - name: Push.BeHeroes.CodeOps.Infrastructure.AmazonWebServices
+      run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices/**/*.nupkg --no-symbols --skip-duplicate --source "github"
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        
