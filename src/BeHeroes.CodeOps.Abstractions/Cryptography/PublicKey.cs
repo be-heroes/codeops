@@ -5,7 +5,7 @@ using ProtoBuf;
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     [ProtoContract(IgnoreUnknownSubTypes = true)]
-    public abstract class PublicKey : Key
+    public sealed class PublicKey : Key
     {
         [ProtoMember(1)]
         public override string KeyId {

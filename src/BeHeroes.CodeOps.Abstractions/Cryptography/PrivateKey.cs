@@ -2,13 +2,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
-    public abstract class PrivateKey : Key
+    public sealed class PrivateKey : Key
     {
-        protected readonly byte[] _keyData;
+        private readonly byte[] _keyData;
 
         public override int KeySize => _keyData.Length;
 
-        protected PrivateKey(byte[] rawKey){
+        public PrivateKey(byte[] rawKey){
             _keyData = rawKey;
         }
 
