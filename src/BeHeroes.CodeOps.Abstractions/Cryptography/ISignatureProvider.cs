@@ -1,4 +1,4 @@
-namespace BeHeroes.CodeOps.Abstractions.Encryption
+namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     public interface ISignatureProvider
     {
