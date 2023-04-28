@@ -4,7 +4,7 @@ using ProtoBuf;
 
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
-    [ProtoContract]
+    [ProtoContract(IgnoreUnknownSubTypes = true)]
     public abstract class PublicKey : Key
     {
         [ProtoMember(1)]
