@@ -41,4 +41,36 @@ jobs:
       run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices/**/*.nupkg --no-symbols --skip-duplicate --source "github"
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build.BeHeroes.CodeOps.Infrastructure.Azure.DevOps
+      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.Azure.DevOps
+    - name: Pack.BeHeroes.CodeOps.Infrastructure.Azure.DevOps
+      run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.Azure.DevOps
+    - name: Push.BeHeroes.CodeOps.Infrastructure.Azure.DevOps
+      run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.Azure.DevOps/**/*.nupkg --no-symbols --skip-duplicate --source "github"
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build.BeHeroes.CodeOps.Infrastructure.EntityFramework
+      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.EntityFramework
+    - name: Pack.BeHeroes.CodeOps.Infrastructure.EntityFramework
+      run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.EntityFramework
+    - name: Push.BeHeroes.CodeOps.Infrastructure.EntityFramework
+      run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.EntityFramework/**/*.nupkg --no-symbols --skip-duplicate --source "github"
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build.BeHeroes.CodeOps.Infrastructure.Kafka
+      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.Kafka
+    - name: Pack.BeHeroes.CodeOps.Infrastructure.Kafka
+      run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.Kafka
+    - name: Push.BeHeroes.CodeOps.Infrastructure.Kafka
+      run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.Kafka/**/*.nupkg --no-symbols --skip-duplicate --source "github"
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build.BeHeroes.CodeOps.Security.Policies
+      run: dotnet build src/BeHeroes.CodeOps.Security.Policies
+    - name: Pack.BeHeroes.CodeOps.Security.Policies
+      run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Security.Policies
+    - name: Push.BeHeroes.CodeOps.Security.Policies
+      run: dotnet nuget push src/BeHeroes.CodeOps.Security.Policies/**/*.nupkg --no-symbols --skip-duplicate --source "github"
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
         
