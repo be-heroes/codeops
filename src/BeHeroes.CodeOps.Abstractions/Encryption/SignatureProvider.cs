@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
-
 namespace BeHeroes.CodeOps.Abstractions.Encryption
 {
-    public abstract class SignatureProvider : ISignatureProvider
+    public abstract class SignatureProvider : Microsoft.IdentityModel.Tokens.SignatureProvider, ISignatureProvider
     {
-        public abstract ValueTask<string> GetSignature(string passphrase);
+        protected SignatureProvider(Key key, string algorithm) : base(key, algorithm)
+        {
+        }
     }
 }

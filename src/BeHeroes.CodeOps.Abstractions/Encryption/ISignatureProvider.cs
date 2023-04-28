@@ -1,9 +1,13 @@
-using System.Threading.Tasks;
-
 namespace BeHeroes.CodeOps.Abstractions.Encryption
 {
     public interface ISignatureProvider
     {
-        ValueTask<string> GetSignature(string passphrase);
+        string Algorithm { get; }
+
+        byte[] Sign (byte[] input);
+
+        bool Verify (byte[] input, byte[] signature);
+
+        bool Verify (byte[] input, int inputOffset, int inputLength, byte[] signature, int signatureOffset, int signatureLength);
     }
 }
