@@ -32,6 +32,8 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
         BUILD_VERSION: ${{ steps.semver.outputs.semver }}
     - name: Echo BUILD_VERSION
+      env:
+        BUILD_VERSION: ${{ steps.semver.outputs.semver }}
       run: echo "$BUILD_VERSION"
     - name: SetupNuGet
       run: dotnet nuget remove source github && dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
