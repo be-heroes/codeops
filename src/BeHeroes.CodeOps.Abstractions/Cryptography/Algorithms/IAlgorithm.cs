@@ -6,8 +6,8 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
     { 
         string Name { get; }
 
-        int GetKeySize();
+        int KeySize { get; }
 
-        KeySizes[] GetLegalKeySizes(); 
+        KeySizes[] LegalKeySizes { get; }
     }
 }

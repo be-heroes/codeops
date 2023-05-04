@@ -6,8 +6,8 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
     {
         public string Name { get; init; } = string.Empty;
 
-        public abstract int GetKeySize();
+        public int KeySize { get; init; } = 256;
 
-        public abstract KeySizes[] GetLegalKeySizes();
+        public KeySizes[] LegalKeySizes { get; init; } = new KeySizes[]{ new KeySizes(256, 256, 0)};
     }
 }
