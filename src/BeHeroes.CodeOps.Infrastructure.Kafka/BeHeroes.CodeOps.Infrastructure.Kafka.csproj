@@ -4,6 +4,12 @@
       <TargetFramework>net7.0</TargetFramework>
       <ImplicitUsings>enable</ImplicitUsings>
       <Nullable>enable</Nullable>
+      <PackageId>BeHeroes.CodeOps.Infrastructure.Kafka</PackageId>      
+      <Version Condition="'$(BUILD_VERSION)' == ''">1.0.0</Version>
+      <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
+      <Authors>ZaradarBH</Authors>
+      <Company>Be-Heroes</Company>
+      <PackageDescription>PACKAGE_DESCRIPTION</PackageDescription>
       <RepositoryUrl>https://github.com/be-heroes/code-ops</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
     </PropertyGroup>

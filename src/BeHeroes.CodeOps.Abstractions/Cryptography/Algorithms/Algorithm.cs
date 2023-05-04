@@ -6,7 +6,7 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
     {
         public string Name { get; init; } = nameof(T);
 
-        public virtual T Provider => new T();
+        protected virtual T Provider => new T();
 
         public abstract int GetKeySize();
 

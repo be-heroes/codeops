@@ -16,6 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3    
+    - name: Set Release Version
+      run: |
+        $version = "1.0.{0:#}" -f $($Env:GITHUB_RUN_NUMBER)
+        echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
     - name: SetupDotNet
       uses: actions/setup-dotnet@v3
       with:
