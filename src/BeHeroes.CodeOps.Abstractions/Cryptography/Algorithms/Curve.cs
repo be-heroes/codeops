@@ -2,14 +2,14 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
 {
     public abstract class Curve : ICurve
     {
-        protected readonly object _parameters;
+        public virtual object Parameters { get; init; }
 
         public string Identifier { get; init; }
 
         protected Curve(string identifier, object parameters)
         {
             Identifier = identifier;
-            _parameters = parameters;
+            Parameters = parameters;
         }
 
         public bool Equals(ICurve other)
@@ -19,7 +19,7 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
 
         public override int GetHashCode()
         {
-            return Tuple.Create(Identifier, _parameters).GetHashCode();
+            return Tuple.Create(Identifier, Parameters).GetHashCode();
         }
 
         public abstract byte[] GetSeed();
