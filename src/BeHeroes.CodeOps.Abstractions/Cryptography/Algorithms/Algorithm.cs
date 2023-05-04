@@ -10,9 +10,11 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
 
         public KeySizes[] LegalKeySizes { get; init; }
         
-        public ICurve Curve { get; init; }
+        public virtual Curve Curve { get; init; }
 
-        protected Algorithm(string identifier, int keySize, KeySizes[] legalKeySizes, ICurve curve)
+        ICurve IAlgorithm.Curve => Curve;
+
+        protected Algorithm(string identifier, int keySize, KeySizes[] legalKeySizes, Curve curve)
         {
             Identifier = identifier;
             KeySize = keySize;
