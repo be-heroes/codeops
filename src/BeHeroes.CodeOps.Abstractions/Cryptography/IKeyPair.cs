@@ -6,8 +6,8 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
     {
         IAlgorithm Algorithm { get; }
 
-        Key Private{ get; }
+        IKey Private{ get; }
 
-        Key Public { get; }
+        IKey Public { get; }
     }
 }

@@ -4,9 +4,9 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
 {
     public interface IAlgorithm : IDisposable
     { 
-        string Name { get; }
+        string Identifier { get; }
 
-        string CurveIdentifier { get; }
+        ICurve Curve { get; }
 
         int KeySize { get; }
 
