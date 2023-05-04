@@ -4,10 +4,6 @@ using Amazon.Runtime;
 using AutoMapper;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.Identity.Role;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Role
 {

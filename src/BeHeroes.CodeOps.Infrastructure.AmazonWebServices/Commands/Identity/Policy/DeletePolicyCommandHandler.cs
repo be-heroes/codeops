@@ -2,9 +2,6 @@
 using Amazon.IdentityManagement.Model;
 using Amazon.Runtime;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Policy
 {

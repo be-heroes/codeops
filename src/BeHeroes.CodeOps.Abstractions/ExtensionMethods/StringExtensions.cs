@@ -1,5 +1,4 @@
-﻿using System;
-using BeHeroes.CodeOps.Abstractions.Strings;
+﻿using BeHeroes.CodeOps.Abstractions.Strings;
 
 namespace BeHeroes.CodeOps.Abstractions.ExtensionMethods
 {

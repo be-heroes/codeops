@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-
-namespace BeHeroes.CodeOps.Abstractions.Grid.Provisioning
+﻿namespace BeHeroes.CodeOps.Abstractions.Grid.Provisioning
 {
     public interface IProvisioningResponse
     {

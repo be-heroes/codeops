@@ -1,5 +1,4 @@
 ﻿using BeHeroes.CodeOps.Abstractions.Events;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BeHeroes.CodeOps.Abstractions.Entities

@@ -1,6 +1,5 @@
 ﻿using BeHeroes.CodeOps.Security.Policies.Requirements;
 using Microsoft.AspNetCore.Authorization;
-using System.Collections.Generic;
 
 namespace BeHeroes.CodeOps.Security.Policies.Policies.All
 {

@@ -1,6 +1,5 @@
 ﻿using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Security;
-using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;

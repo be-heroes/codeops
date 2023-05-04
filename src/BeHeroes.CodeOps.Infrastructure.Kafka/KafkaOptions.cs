@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BeHeroes.CodeOps.Infrastructure.Kafka
+﻿namespace BeHeroes.CodeOps.Infrastructure.Kafka
 {
     public class KafkaOptions
     {

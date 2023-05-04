@@ -1,6 +1,4 @@
 ﻿using BeHeroes.CodeOps.Abstractions.Data;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BeHeroes.CodeOps.Abstractions.Entities
 {

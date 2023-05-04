@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-
-namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Release.Definition
+﻿namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Release.Definition
 {
     public sealed class GetReleaseDefinitionRequest : ApiRequest
     {

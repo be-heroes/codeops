@@ -2,9 +2,6 @@
 using BeHeroes.CodeOps.Abstractions.Facade;
 using BeHeroes.CodeOps.Abstractions.Strategies;
 using Confluent.Kafka;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.Kafka.Strategies
 {

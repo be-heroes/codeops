@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
+﻿namespace BeHeroes.CodeOps.Infrastructure.EntityFramework
 {
     public sealed class EntityContextException : Exception
     {

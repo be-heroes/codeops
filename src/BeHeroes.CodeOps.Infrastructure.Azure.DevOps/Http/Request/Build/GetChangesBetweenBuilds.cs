@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-
-namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build
+﻿namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build
 {
     public sealed class GetChangesBetweenBuilds : ApiRequest
     {

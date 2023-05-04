@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BeHeroes.CodeOps.Abstractions.Grid.Provisioning
+﻿namespace BeHeroes.CodeOps.Abstractions.Grid.Provisioning
 {
     public interface IActualState : IDesiredState
     {

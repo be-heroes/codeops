@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-
-namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Profile
+﻿namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Profile
 {
     public sealed class GetProfileRequest : ApiRequest
     {

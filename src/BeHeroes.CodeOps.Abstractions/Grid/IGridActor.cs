@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BeHeroes.CodeOps.Abstractions.Grid
+﻿namespace BeHeroes.CodeOps.Abstractions.Grid
 {
     public interface IGridActor
     {

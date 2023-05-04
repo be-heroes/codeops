@@ -4,8 +4,6 @@ using Amazon.Runtime;
 using AutoMapper;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.DataTransferObjects.Identity.Policy;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Identity.Policy
 {

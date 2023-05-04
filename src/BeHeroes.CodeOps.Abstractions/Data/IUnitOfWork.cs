@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace BeHeroes.CodeOps.Abstractions.Data
+﻿namespace BeHeroes.CodeOps.Abstractions.Data
 {
     public interface IUnitOfWork : IDisposable
     {

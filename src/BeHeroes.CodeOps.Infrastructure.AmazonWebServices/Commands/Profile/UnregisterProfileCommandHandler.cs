@@ -1,7 +1,5 @@
 ﻿using Amazon.Runtime.CredentialManagement;
 using Microsoft.Extensions.Options;
-using System.Threading;
-using System.Threading.Tasks;
 using BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Factories;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices.Commands.Profile

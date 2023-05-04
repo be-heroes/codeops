@@ -1,7 +1,5 @@
 ﻿using BeHeroes.CodeOps.Security.Policies.Requirements;
 using Microsoft.AspNetCore.Authorization;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BeHeroes.CodeOps.Security.Policies.Handlers
 {

@@ -1,5 +1,4 @@
 ﻿using BeHeroes.CodeOps.Abstractions.Facade;
-using System;
 
 namespace BeHeroes.CodeOps.Infrastructure.AmazonWebServices
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BeHeroes.CodeOps.Abstractions.ExtensionMethods
+﻿namespace BeHeroes.CodeOps.Abstractions.ExtensionMethods
 {
     public static class CharExtensions
     {

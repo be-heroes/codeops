@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-
-namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build.Definition
+﻿namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build.Definition
 {
     public sealed class GetBuildDefinitionYamlRequest : ApiRequest
     {

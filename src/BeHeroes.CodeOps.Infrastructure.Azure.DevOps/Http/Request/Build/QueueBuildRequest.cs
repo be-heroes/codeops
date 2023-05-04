@@ -1,6 +1,4 @@
 ﻿using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Build;
-using System;
-using System.Net.Http;
 using System.Text.Json;
 
 namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Build
