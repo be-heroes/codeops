@@ -8,6 +8,6 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
 
         public int KeySize { get; init; } = 256;
 
-        public KeySizes[] LegalKeySizes { get; init; } = new KeySizes[]{ new KeySizes(256, 256, 0)};
+        public KeySizes[] LegalKeySizes { get; init; } = new KeySizes[]{ new KeySizes(256, 4096, 64)};
     }
 }
