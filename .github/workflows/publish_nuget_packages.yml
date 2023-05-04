@@ -22,7 +22,7 @@ jobs:
         git fetch --tags
         git_describe=$(git describe --abbrev=0 --tags)
         semver=${git_describe#v}
-        echo "::set-output name=semver::$semver"
+        echo "semver=$semver" >> $GITHUB_OUTPUT
     - name: SetupDotNet
       uses: actions/setup-dotnet@v3
       with:
