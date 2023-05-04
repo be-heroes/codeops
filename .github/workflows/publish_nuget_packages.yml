@@ -32,41 +32,39 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: SetupNuGet
       run: dotnet nuget remove source github && dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
-    - name: Build.BeHeroes.CodeOps.Abstractions
-      run: dotnet build src/BeHeroes.CodeOps.Abstractions
     - name: Pack.BeHeroes.CodeOps.Abstractions
       env:
         BUILD_VERSION: ${{ steps.semver.outputs.semver }}
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Abstractions
     - name: Push.BeHeroes.CodeOps.Abstractions
       run: dotnet nuget push src/BeHeroes.CodeOps.Abstractions/**/*.nupkg --no-symbols --skip-duplicate --source "github"
-    - name: Build.BeHeroes.CodeOps.Infrastructure.AmazonWebServices
-      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices
     - name: Pack.BeHeroes.CodeOps.Infrastructure.AmazonWebServices
+      env:
+        BUILD_VERSION: ${{ steps.semver.outputs.semver }}
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices
     - name: Push.BeHeroes.CodeOps.Infrastructure.AmazonWebServices
       run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices/**/*.nupkg --no-symbols --skip-duplicate --source "github"
-    - name: Build.BeHeroes.CodeOps.Infrastructure.Azure.DevOps
-      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.Azure.DevOps
     - name: Pack.BeHeroes.CodeOps.Infrastructure.Azure.DevOps
+      env:
+        BUILD_VERSION: ${{ steps.semver.outputs.semver }}
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.Azure.DevOps
     - name: Push.BeHeroes.CodeOps.Infrastructure.Azure.DevOps
       run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.Azure.DevOps/**/*.nupkg --no-symbols --skip-duplicate --source "github"
-    - name: Build.BeHeroes.CodeOps.Infrastructure.EntityFramework
-      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.EntityFramework
     - name: Pack.BeHeroes.CodeOps.Infrastructure.EntityFramework
+      env:
+        BUILD_VERSION: ${{ steps.semver.outputs.semver }}
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.EntityFramework
     - name: Push.BeHeroes.CodeOps.Infrastructure.EntityFramework
       run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.EntityFramework/**/*.nupkg --no-symbols --skip-duplicate --source "github"
-    - name: Build.BeHeroes.CodeOps.Infrastructure.Kafka
-      run: dotnet build src/BeHeroes.CodeOps.Infrastructure.Kafka
     - name: Pack.BeHeroes.CodeOps.Infrastructure.Kafka
+      env:
+        BUILD_VERSION: ${{ steps.semver.outputs.semver }}
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.Kafka
     - name: Push.BeHeroes.CodeOps.Infrastructure.Kafka
       run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.Kafka/**/*.nupkg --no-symbols --skip-duplicate --source "github"
-    - name: Build.BeHeroes.CodeOps.Security.Policies
-      run: dotnet build src/BeHeroes.CodeOps.Security.Policies
     - name: Pack.BeHeroes.CodeOps.Security.Policies
+      env:
+        BUILD_VERSION: ${{ steps.semver.outputs.semver }}
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Security.Policies
     - name: Push.BeHeroes.CodeOps.Security.Policies
       run: dotnet nuget push src/BeHeroes.CodeOps.Security.Policies/**/*.nupkg --no-symbols --skip-duplicate --source "github"
