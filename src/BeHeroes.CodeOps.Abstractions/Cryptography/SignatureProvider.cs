@@ -6,7 +6,7 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
     {
         protected readonly IAlgorithm _algorithm;
 
-        protected SignatureProvider(Key key, IAlgorithm algorithm) : base(key, algorithm.Name)
+        protected SignatureProvider(Key key, IAlgorithm algorithm) : base(key, algorithm.Identifier)
         {
             _algorithm = algorithm;
         }
