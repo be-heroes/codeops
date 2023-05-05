@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
@@ -13,6 +14,11 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
         {
             _rawData = rawData;
             IsPrivate = isPrivate;
+        }
+
+        public virtual bool IsSupportedAlgorithm(IAlgorithm algorithm)
+        {
+            return IsSupportedAlgorithm(algorithm.Identifier);
         }
 
         public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
