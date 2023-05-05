@@ -1,12 +1,12 @@
 namespace BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms
 {
-    public abstract class Curve : ICurve
+    public abstract class Curve<T> : ICurve
     {
-        public virtual object Parameters { get; init; }
+        public T Parameters { get; init; }
 
         public string Identifier { get; init; }
 
-        protected Curve(string identifier, object parameters)
+        protected Curve(string identifier, T parameters)
         {
             Identifier = identifier;
             Parameters = parameters;
