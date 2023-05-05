@@ -6,11 +6,11 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
     {
         protected readonly IAlgorithm _algorithm;
 
+        IAlgorithm ISignatureProvider.Algorithm => _algorithm;
+
         protected SignatureProvider(Key key, IAlgorithm algorithm) : base(key, algorithm.Identifier)
         {
             _algorithm = algorithm;
         }
-
-        IAlgorithm ISignatureProvider.Algorithm => _algorithm;
     }
 }
