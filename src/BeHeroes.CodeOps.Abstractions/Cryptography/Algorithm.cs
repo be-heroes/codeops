@@ -1,5 +1,4 @@
 using System.Security.Cryptography;
-using BeHeroes.CodeOps.Abstractions.Cryptography.Structures;
 
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {

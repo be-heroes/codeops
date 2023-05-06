@@ -1,12 +1,15 @@
-namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
+namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     public abstract class Structure : IStructure
     {
         public string Identifier { get; init; }
 
-        protected Structure(string identifier)
+        public IStructureParameters? Parameters { get; init; }
+
+        protected Structure(string identifier, IStructureParameters? parameters)
         {
             Identifier = identifier;
+            Parameters = parameters;
         }
 
         public bool Equals(IStructure other)
@@ -16,7 +19,9 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
 
         public override int GetHashCode()
         {
-            return Tuple.Create(Identifier).GetHashCode();
+            return Tuple.Create(Identifier, Parameters).GetHashCode();
         }
+
+        public abstract byte[] GetSeed();
     }
 }
