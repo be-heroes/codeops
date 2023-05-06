@@ -1,12 +1,14 @@
+using System.Collections.ObjectModel;
+
 namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
 {
     public abstract class Curve : Structure, ICurve
     {
-        protected readonly IReadOnlyCollection<byte> _seed;
+        protected IReadOnlyCollection<byte> _seed;
 
         protected Curve(string identifier, byte[] seed) : base(identifier)
         {
-            _seed = seed;
+            _seed = seed.AsReadOnly<byte>();
         }
 
         public override int GetHashCode()
@@ -14,7 +16,7 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
             return Tuple.Create(base.GetHashCode(), _seed).GetHashCode();
         }
 
-        public virtual byte[] GetSeed()
+        public byte[] GetSeed()
         {
             return _seed.ToArray();
         }
