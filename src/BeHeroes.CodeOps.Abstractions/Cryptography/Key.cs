@@ -5,7 +5,7 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     public abstract class Key : SecurityKey, IValidatableObject, IKey
     {
-        protected readonly byte[] _rawData = Array.Empty<byte>();
+        protected readonly byte[] _rawData;
 
         public bool IsPrivate { get; init; }
 
@@ -22,7 +22,7 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
 
         public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (_rawData.Length == 0)
+            if (_rawData == null || _rawData.Length == 0)
                 yield return new ValidationResult("Key is not initialized");
         }
     }

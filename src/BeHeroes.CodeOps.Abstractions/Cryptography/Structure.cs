@@ -2,14 +2,14 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     public abstract class Structure : IStructure
     {
+        protected readonly byte[]? _seed;
+
         public string Identifier { get; init; }
 
-        public IStructureParameters? Parameters { get; init; }
-
-        protected Structure(string identifier, IStructureParameters? parameters)
+        protected Structure(string identifier, byte[]? seed)
         {
             Identifier = identifier;
-            Parameters = parameters;
+            _seed = seed;
         }
 
         public bool Equals(IStructure other)
@@ -19,9 +19,12 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
 
         public override int GetHashCode()
         {
-            return Tuple.Create(Identifier, Parameters).GetHashCode();
+            return Tuple.Create(Identifier, _seed).GetHashCode();
         }
 
-        public abstract byte[] GetSeed();
+        public virtual byte[] GetSeed()
+        {
+            return _seed ?? Array.Empty<byte>();
+        }
     }
 }
