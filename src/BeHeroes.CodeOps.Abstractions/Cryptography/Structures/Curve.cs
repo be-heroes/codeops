@@ -1,10 +1,10 @@
 namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
 {
-    public abstract class Curve<T> : Structure, ICurve
+    public abstract class Curve : Structure, ICurve
     {
-        public IEnumerable<ICurveParameter> Parameters { get; init; }
+        public ICurveParameters Parameters { get; init; }
 
-        protected Curve(string identifier, IEnumerable<ICurveParameter> parameters) : base(identifier)
+        protected Curve(string identifier, ICurveParameters parameters) : base(identifier)
         {
             Parameters = parameters;
         }

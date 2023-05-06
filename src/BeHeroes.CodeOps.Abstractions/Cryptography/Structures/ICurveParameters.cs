@@ -1,6 +1,6 @@
 namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
 {
-    public interface ICurveParameter
+    public interface ICurveParameters
     { 
     }
 }

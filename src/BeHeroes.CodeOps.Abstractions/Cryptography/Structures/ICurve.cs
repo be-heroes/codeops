@@ -2,7 +2,7 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
 {
     public interface ICurve : IStructure
     { 
-        IEnumerable<ICurveParameter> Parameters { get; }
+        ICurveParameters Parameters { get; }
         
         byte[] GetSeed();
     }
