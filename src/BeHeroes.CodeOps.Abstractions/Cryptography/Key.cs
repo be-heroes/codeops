@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BeHeroes.CodeOps.Abstractions.Cryptography

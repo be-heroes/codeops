@@ -1,5 +1,3 @@
-using BeHeroes.CodeOps.Abstractions.Cryptography.Algorithms;
-
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
     public abstract class SignatureProvider : Microsoft.IdentityModel.Tokens.SignatureProvider, ISignatureProvider

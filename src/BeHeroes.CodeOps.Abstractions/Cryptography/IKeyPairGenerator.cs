@@ -1,9 +1,7 @@
 namespace BeHeroes.CodeOps.Abstractions.Cryptography
 {
-    public interface IKeyPairGenerator<T>
+    public interface IKeyPairGenerator
     {
         IKeyPair GenerateKeyPair();
-
-        void Init(T parameters);
     }
 }
