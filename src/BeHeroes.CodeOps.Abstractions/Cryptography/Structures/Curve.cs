@@ -2,18 +2,21 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography.Structures
 {
     public abstract class Curve : Structure, ICurve
     {
-        public ICurveParameters Parameters { get; init; }
+        protected readonly IReadOnlyCollection<byte> _seed;
 
-        protected Curve(string identifier, ICurveParameters parameters) : base(identifier)
+        protected Curve(string identifier, byte[] seed) : base(identifier)
         {
-            Parameters = parameters;
+            _seed = seed;
         }
 
         public override int GetHashCode()
         {
-            return Tuple.Create(base.GetHashCode(), Parameters).GetHashCode();
+            return Tuple.Create(base.GetHashCode(), _seed).GetHashCode();
         }
 
-        public abstract byte[] GetSeed();
+        public virtual byte[] GetSeed()
+        {
+            return _seed.ToArray();
+        }
     }
 }
