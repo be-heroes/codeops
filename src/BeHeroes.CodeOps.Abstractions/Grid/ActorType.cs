@@ -1,7 +1,7 @@
 ﻿namespace BeHeroes.CodeOps.Abstractions.Grid
 {
     [Flags]
-    public enum GridActorType
+    public enum ActorType
     {
         None = 0,
         User = 1,

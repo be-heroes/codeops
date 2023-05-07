@@ -1,8 +1,8 @@
 ﻿using System.Net;
 
-namespace BeHeroes.CodeOps.Abstractions.Grid.Provisioning
+namespace BeHeroes.CodeOps.Abstractions.Grid.Devices
 {
-    public interface IProvisioningResponse
+    public interface IDeviceResponse
     {
         HttpStatusCode Status { get; }
 
