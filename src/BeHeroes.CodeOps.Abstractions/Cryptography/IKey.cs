@@ -6,6 +6,8 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
     {
         bool IsPrivate { get; }
 
+        int KeySize { get; }
+
         bool IsSupportedAlgorithm(IAlgorithm algorithm);
 
         IEnumerable<ValidationResult> Validate(ValidationContext validationContext);
