@@ -7,11 +7,16 @@ namespace BeHeroes.CodeOps.Abstractions.Cryptography
     {
         protected readonly byte[] _rawData;
 
+        protected readonly int _keySize;
+
+        public override int KeySize => _keySize;
+
         public bool IsPrivate { get; init; }
 
-        protected Key(byte[] rawData, bool isPrivate = true)
+        protected Key(byte[] rawData, int keySize = 256, bool isPrivate = true)
         {
             _rawData = rawData;
+            _keySize = keySize;
             IsPrivate = isPrivate;
         }
 
