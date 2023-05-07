@@ -29,5 +29,10 @@ namespace BeHeroes.CodeOps.Abstractions.ExtensionMethods
 
             return new BigInteger(encoded);
         }
+
+        public static bool IsNegativeZero(this BigInteger value)
+        {
+            return BigInteger.IsNegative(value) && value == 0;
+        }
     }
 }
