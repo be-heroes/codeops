@@ -44,6 +44,12 @@ jobs:
       run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices
     - name: Push.BeHeroes.CodeOps.Infrastructure.AmazonWebServices
       run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.AmazonWebServices/**/*.nupkg --no-symbols --skip-duplicate --source "github"
+    - name: Pack.BeHeroes.CodeOps.Infrastructure.Azure.Devices
+      env:
+        BUILD_VERSION: ${{ steps.semver.outputs.semver }}
+      run: dotnet pack --configuration Release src/BeHeroes.CodeOps.Infrastructure.Azure.Devices
+    - name: Push.BeHeroes.CodeOps.Infrastructure.Azure.Devices
+      run: dotnet nuget push src/BeHeroes.CodeOps.Infrastructure.Azure.Devices/**/*.nupkg --no-symbols --skip-duplicate --source "github"
     - name: Pack.BeHeroes.CodeOps.Infrastructure.Azure.DevOps
       env:
         BUILD_VERSION: ${{ steps.semver.outputs.semver }}
