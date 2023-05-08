@@ -1,18 +1,17 @@
 ﻿using BeHeroes.CodeOps.Abstractions.Cryptography;
+using BeHeroes.CodeOps.Abstractions.Grid.Identity;
 
 namespace BeHeroes.CodeOps.Abstractions.Grid
 {
     public interface IActor
     {
-        Guid Id { get; }
+        DecentralizedIdentifier Identifier { get; }
 
-        Uri Uri { get; }
+        IKey? SecurityKey { get; }
 
         ActorType ActorType { get; }
 
         ActorStatus ActorStatus { get; }
-
-        IKey? SecurityKey { get; }
         
         KeyValuePair<string, string>? GetResourcePrincipal();
     }
