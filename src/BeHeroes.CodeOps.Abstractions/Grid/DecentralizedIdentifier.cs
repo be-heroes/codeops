@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace BeHeroes.CodeOps.Abstractions.Grid.Identity
+namespace BeHeroes.CodeOps.Abstractions.Grid
 {
     public struct DecentralizedIdentifier
     {

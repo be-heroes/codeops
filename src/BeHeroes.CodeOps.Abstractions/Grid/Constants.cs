@@ -1,4 +1,4 @@
-namespace BeHeroes.CodeOps.Abstractions.Grid.Identity
+namespace BeHeroes.CodeOps.Abstractions.Grid
 {
     public class Constants
     {
