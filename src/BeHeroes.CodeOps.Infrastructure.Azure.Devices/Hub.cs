@@ -6,7 +6,8 @@ using BeHeroes.CodeOps.Abstractions.Grid;
 using BeHeroes.CodeOps.Abstractions.Grid.Devices;
 using BeHeroes.CodeOps.Abstractions.Repositories;
 
-namespace BeHeroes.CodeOps.Infrastructure.Azure{
+namespace BeHeroes.CodeOps.Infrastructure.Azure.Devices
+{
     public sealed class Hub<TContext> : Repository<TContext, IDeviceRegistration>, IHub where TContext : class, IUnitOfWork
     {
         public Guid Id => throw new NotImplementedException();

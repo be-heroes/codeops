@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using BeHeroes.CodeOps.Abstractions.Aggregates;
 using BeHeroes.CodeOps.Abstractions.Grid.Devices;
 
-namespace BeHeroes.CodeOps.Infrastructure.Azure
+namespace BeHeroes.CodeOps.Infrastructure.Azure.Devices
 {
     public sealed class DeviceRegistration : AggregateRoot<Guid>, IDeviceRegistration
     {

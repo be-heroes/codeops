@@ -3,7 +3,8 @@ using BeHeroes.CodeOps.Abstractions.Cryptography;
 using BeHeroes.CodeOps.Abstractions.Grid;
 using BeHeroes.CodeOps.Abstractions.Grid.Devices;
 
-namespace BeHeroes.CodeOps.Infrastructure.Azure{
+namespace BeHeroes.CodeOps.Infrastructure.Azure.Devices
+{
     public abstract class Device : AggregateRoot<Guid>, IDevice
     {
         public Uri Uri => throw new NotImplementedException();

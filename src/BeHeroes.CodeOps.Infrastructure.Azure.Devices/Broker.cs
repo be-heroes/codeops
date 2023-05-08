@@ -6,7 +6,7 @@ using BeHeroes.CodeOps.Abstractions.Grid.Devices;
 using BeHeroes.CodeOps.Abstractions.Grid.Provisioning;
 using BeHeroes.CodeOps.Abstractions.Repositories;
 
-namespace BeHeroes.CodeOps.Infrastructure.Azure
+namespace BeHeroes.CodeOps.Infrastructure.Azure.Devices
 {
     public sealed class Broker<TContext> : Repository<TContext, IDevice>, IBroker where TContext : class, IUnitOfWork
     {
