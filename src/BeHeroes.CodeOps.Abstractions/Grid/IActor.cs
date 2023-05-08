@@ -2,13 +2,13 @@
 
 namespace BeHeroes.CodeOps.Abstractions.Grid
 {
-    public interface IActor
+    public interface IActor : IDisposable, IAsyncDisposable
     {
         DecentralizedIdentifier Identifier { get; }
 
         IKey? SecurityKey { get; }
 
-        ActorType ActorType { get; }
+        ActorType ActorType => ActorType.None;
 
         ActorStatus ActorStatus { get; }
         

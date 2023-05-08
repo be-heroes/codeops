@@ -2,8 +2,8 @@
 
 namespace BeHeroes.CodeOps.Abstractions.Grid.Devices
 {
-    public interface IDeviceClient : IFacade, IAsyncDisposable, IDisposable
+    public interface IDeviceClient : IFacade, IActor
     {
-        
+        new ActorType ActorType => ActorType.User | ActorType.External;        
     }
 }
