@@ -2,17 +2,17 @@ using System.Text.RegularExpressions;
 
 namespace BeHeroes.CodeOps.Abstractions.Grid.Identity
 {
-    public sealed class DidUrl
+    public struct DecentralizedIdentifier
     {
         private static Regex regEx = new Regex(Constants.REGEX_DID_URL, RegexOptions.IgnoreCase);
         
-        public string Did => $"did:{Method}:{Id}";
+        public string Did => $"did:{MethodName}:{MethodId}";
 
         public Uri Url { get; init; }
 
-        public string Method { get; init; }
+        public string MethodName { get; init; }
 
-        public string Id { get; init; }
+        public string MethodId { get; init; }
 
         public string Path { get; init; }
 
@@ -22,22 +22,22 @@ namespace BeHeroes.CodeOps.Abstractions.Grid.Identity
 
         public Dictionary<string, string> Parameters { get; init; }
 
-        public DidUrl(Uri url, string method, string id, string path, string fragment, string query, Dictionary<string, string>? parameters)
+        public DecentralizedIdentifier(Uri didUrl, string method, string id, string path, string fragment, string query, Dictionary<string, string>? parameters)
         {
             Parameters = parameters ?? new Dictionary<string, string>();            
-            Url = url;
-            Method = method;
-            Id = id;
+            Url = didUrl;
+            MethodName = method;
+            MethodId = id;
             Path = path;
             Fragment = fragment;
             Query = query;
         }
 
-        public static DidUrl? Parse(Uri url)
+        public static DecentralizedIdentifier? Parse(Uri didUrl)
         {
-            if (!string.IsNullOrWhiteSpace(url.AbsoluteUri))
+            if (!string.IsNullOrWhiteSpace(didUrl.AbsoluteUri))
             {
-                var regExMatches = regEx.Matches(url.AbsoluteUri);
+                var regExMatches = regEx.Matches(didUrl.AbsoluteUri);
 
                 if (regExMatches.Any())
                 {
@@ -64,7 +64,7 @@ namespace BeHeroes.CodeOps.Abstractions.Grid.Identity
                         }
                     }
 
-                    return new DidUrl(url, methodName, methodId, path, fragment, query, parameters);
+                    return new DecentralizedIdentifier(didUrl, methodName, methodId, path, fragment, query, parameters);
                 }
             }
 
