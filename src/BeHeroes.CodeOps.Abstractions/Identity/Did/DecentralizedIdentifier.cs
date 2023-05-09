@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace BeHeroes.CodeOps.Abstractions.Grid
+namespace BeHeroes.CodeOps.Abstractions.Identity.Did
 {
     public struct DecentralizedIdentifier
     {
@@ -45,18 +45,18 @@ namespace BeHeroes.CodeOps.Abstractions.Grid
 
                     Dictionary<string, string>? parameters = null;
 
-                    var methodName = firstMatch.Groups[Constants.REGEX_METHOD_NAME_CAPTURE_IDENTIFIER].Captures[0].Value;
-                    var methodId = firstMatch.Groups[Constants.REGEX_METHOD_ID_CAPTURE_IDENTIFIER].Captures[0].Value;                
-                    var path = (firstMatch.Groups[Constants.REGEX_PATH_CAPTURE_IDENTIFIER].Captures.Count > 0) ? firstMatch.Groups[Constants.REGEX_PATH_CAPTURE_IDENTIFIER].Captures[0].Value : string.Empty;
-                    var fragment = (firstMatch.Groups[Constants.REGEX_FRAGMENT_CAPTURE_IDENTIFIER].Captures.Count > 0) ? firstMatch.Groups[Constants.REGEX_FRAGMENT_CAPTURE_IDENTIFIER].Captures[0].Value.Substring(1) : string.Empty;
-                    var query = (firstMatch.Groups[Constants.REGEX_QUERY_CAPTURE_IDENTIFIER].Captures.Count > 0) ? firstMatch.Groups[Constants.REGEX_QUERY_CAPTURE_IDENTIFIER].Captures[0].Value.Substring(1) : string.Empty;
+                    var methodName = firstMatch.Groups[Constants.REGEX_DID_METHOD_NAME_CAPTURE_IDENTIFIER].Captures[0].Value;
+                    var methodId = firstMatch.Groups[Constants.REGEX_DID_METHOD_ID_CAPTURE_IDENTIFIER].Captures[0].Value;                
+                    var path = (firstMatch.Groups[Constants.REGEX_DID_PATH_CAPTURE_IDENTIFIER].Captures.Count > 0) ? firstMatch.Groups[Constants.REGEX_DID_PATH_CAPTURE_IDENTIFIER].Captures[0].Value : string.Empty;
+                    var fragment = (firstMatch.Groups[Constants.REGEX_DID_FRAGMENT_CAPTURE_IDENTIFIER].Captures.Count > 0) ? firstMatch.Groups[Constants.REGEX_DID_FRAGMENT_CAPTURE_IDENTIFIER].Captures[0].Value.Substring(1) : string.Empty;
+                    var query = (firstMatch.Groups[Constants.REGEX_DID_QUERY_CAPTURE_IDENTIFIER].Captures.Count > 0) ? firstMatch.Groups[Constants.REGEX_DID_QUERY_CAPTURE_IDENTIFIER].Captures[0].Value.Substring(1) : string.Empty;
                     
-                    if (firstMatch.Groups[Constants.REGEX_PARAMS_CAPTURE_IDENTIFIER].Length > 0)
+                    if (firstMatch.Groups[Constants.REGEX_DID_PARAMS_CAPTURE_IDENTIFIER].Length > 0)
                     {
                         parameters = new Dictionary<string, string>();
 
-                        var paramNames = firstMatch.Groups[Constants.REGEX_PARAM_NAME_CAPTURE_IDENTIFIER];
-                        var paramValues = firstMatch.Groups[Constants.REGEX_PARAM_VALUE_CAPTURE_IDENTIFIER];
+                        var paramNames = firstMatch.Groups[Constants.REGEX_DID_PARAM_NAME_CAPTURE_IDENTIFIER];
+                        var paramValues = firstMatch.Groups[Constants.REGEX_DID_PARAM_VALUE_CAPTURE_IDENTIFIER];
 
                         for (var i = 0; i < paramNames.Captures.Count; i++)
                         {
