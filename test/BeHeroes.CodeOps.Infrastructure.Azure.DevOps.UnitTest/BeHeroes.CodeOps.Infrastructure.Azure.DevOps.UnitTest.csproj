@@ -2,7 +2,7 @@
 
     <PropertyGroup>
       <TargetFramework>net7.0</TargetFramework>
-      <RepositoryUrl>https://github.com/be-heroes/code-ops</RepositoryUrl>
+      <RepositoryUrl>https://github.com/be-heroes/codeops</RepositoryUrl>
       <RepositoryType>git</RepositoryType>
 
         <IsPackable>false</IsPackable>
