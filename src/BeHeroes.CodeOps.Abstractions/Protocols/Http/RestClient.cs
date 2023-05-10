@@ -1,6 +1,6 @@
 ﻿namespace BeHeroes.CodeOps.Abstractions.Protocols.Http
 {
-    public abstract class RestClient : HttpMessageInvoker, IRestClient
+    public abstract class RestClient : HttpClient, IRestClient
     {
         protected RestClient(HttpMessageHandler handler) : base(handler)
         {
@@ -10,21 +10,11 @@
         {
         }
 
-        public async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        public ValueTask DisposeAsync()
         {
-            try
-            {
-                return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-            }
-            catch
-            {
-                throw;
-            }
-        }
+            Dispose();
 
-        async Task<HttpResponseMessage> IRestClient.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            return await SendAsync(request, cancellationToken);
+            return ValueTask.CompletedTask;
         }
     }
 }
