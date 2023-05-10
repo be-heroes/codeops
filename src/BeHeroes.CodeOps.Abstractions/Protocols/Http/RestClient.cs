@@ -2,6 +2,10 @@
 {
     public abstract class RestClient : HttpClient, IRestClient
     {
+        protected RestClient() : base()
+        {
+        }
+
         protected RestClient(HttpMessageHandler handler) : base(handler)
         {
         }
