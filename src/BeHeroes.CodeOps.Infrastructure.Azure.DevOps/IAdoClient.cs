@@ -7,7 +7,7 @@ using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.DataTransferObjects.Shared;
 
 namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
 {
-    public interface IAdoClient : IRestClient
+    public interface IAdoClient : IHttpClient
     {
         Task<ReleaseDto?> GetRelease(string projectIdentifier, int releaseId, string? organization = default, CancellationToken cancellationToken = default);
 

@@ -23,9 +23,11 @@ using BeHeroes.CodeOps.Infrastructure.Azure.DevOps.Http.Request.Release;
 namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
 {
     //TODO: Implement Facade & Command patterns to break up class before it turns into Godzilla
-    public sealed class AdoClient : RestClient, IAdoClient
+    public sealed class AdoClient : HttpClient, IAdoClient
     {
         private readonly IOptions<AdoClientOptions> _options;
+
+        IEnumerable<IHttpHeader> IHttpClient.DefaultRequestHeaders => this.DefaultRequestHeaders.Select(header => new AdoClientHeader(header.Key, header.Value));
 
         public AdoClient(IOptions<AdoClientOptions> options) : base(new SocketsHttpHandler())
         {
@@ -250,6 +252,11 @@ namespace BeHeroes.CodeOps.Infrastructure.Azure.DevOps
             var workItemDtos = await response.Content.ReadFromJsonAsync<VstsListResult<List<WorkItemDto>>>(JsonSerializerOptions.Default, cancellationToken);
 
             return workItemDtos?.Value;
+        }
+
+        public ValueTask DisposeAsync()
+        {
+            throw new NotImplementedException();
         }
 
         private class VstsListResult<T>
