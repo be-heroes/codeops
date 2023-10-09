@@ -20,6 +20,11 @@ namespace BeHeroes.CodeOps.Abstractions.Numerics
         BigInteger Next();
 
         /// <summary>
+        /// Advanced the sequencer to the provider value granted that is higher then the current value.
+        /// </summary>
+        void Advance(BigInteger value);
+
+        /// <summary>
         /// Resets the sequencer.
         /// </summary>
         void Reset();

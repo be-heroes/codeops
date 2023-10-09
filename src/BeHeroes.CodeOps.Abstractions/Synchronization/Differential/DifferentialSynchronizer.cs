@@ -45,16 +45,16 @@ namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
         /// Gets the current differential of the synchronizer.
         /// </summary>
         /// <returns>A <see cref="ValueTask{TDiff}"/> representing the asynchronous operation.</returns>
-        public ValueTask<TDiff> GetCurrentDifferential()
+        public ValueTask<TDiff> GetDifferential()
         {
             return ValueTask.FromResult(_current);
         }
 
         /// <summary>
-        /// Returns an asynchronous operation that yields an enumerator over the pending differentials in the queue.
+        /// Returns an asynchronous operation that yields an enumerator over the differential edits in the queue.
         /// </summary>
-        /// <returns>A <see cref="ValueTask{TResult}"/> representing the asynchronous operation that yields an enumerator over the pending differentials in the queue.</returns>
-        public ValueTask<IEnumerator<IDifferential>> GetPendingDifferentials()
+        /// <returns>A <see cref="ValueTask{TResult}"/> representing the asynchronous operation that yields an enumerator over the differential edits in the queue.</returns>
+        public ValueTask<IEnumerator<IDifferential>> GetDifferentialEdits()
         {
             return ValueTask.FromResult(_differentialQueue.GetEnumerator());
         }
