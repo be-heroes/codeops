@@ -47,7 +47,7 @@ namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
         /// <returns>A <see cref="ValueTask{TDiff}"/> representing the asynchronous operation.</returns>
         public ValueTask<TDiff> GetDifferential()
         {
-            return ValueTask.FromResult(_current);
+            return _shadow.Version > _current.Version ? ValueTask.FromResult(_shadow) : ValueTask.FromResult(_current);
         }
 
         /// <summary>
