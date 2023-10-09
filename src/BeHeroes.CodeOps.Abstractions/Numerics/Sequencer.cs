@@ -24,14 +24,14 @@ namespace BeHeroes.CodeOps.Abstractions.Numerics
         public BigInteger? Current() => _current;
 
         /// <summary>
-        /// Advances the sequencer next value to the specified value if it is greater.
+        /// Advances the sequencers current value to the specified value if it is greater.
         /// </summary>
         /// <param name="value">The value to advance the sequencer to.</param>
         public void Advance(BigInteger value)
         {
-            if (value > _next)
+            if (value > _current)
             {
-                _next = value;
+                _current = value;
             }
             else{
                 throw new ArgumentException("The value is not greater than the current value", nameof(value));
