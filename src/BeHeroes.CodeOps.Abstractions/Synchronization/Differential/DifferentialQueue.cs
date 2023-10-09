@@ -3,7 +3,6 @@ using System.Collections.Immutable;
 
 namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
 {
-    //TODO: Migrate to BeHeroes.CodeOps.Abstractions package in Synchronization namespace
     /// <summary>
     /// Represents a queue differential elements.
     /// </summary>
