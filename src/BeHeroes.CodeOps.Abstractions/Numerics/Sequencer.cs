@@ -32,6 +32,7 @@ namespace BeHeroes.CodeOps.Abstractions.Numerics
             if (value > _current)
             {
                 _current = value;
+                _next = value + 1;
             }
             else{
                 throw new ArgumentException("The value is not greater than the current value", nameof(value));
