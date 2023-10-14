@@ -29,13 +29,13 @@ namespace BeHeroes.CodeOps.Abstractions.Numerics
         /// <param name="value">The value to advance the sequencer to.</param>
         public void Advance(BigInteger value)
         {
-            if (value > _current)
+            if (value > (_current ?? 0))
             {
                 _current = value;
                 _next = value + 1;
             }
             else{
-                throw new ArgumentException("The value is not greater than the current value", nameof(value));
+                throw new ArgumentException($"The value ({value}) is not greater than the current value ({_current})", nameof(value));
             }            
         }
 
