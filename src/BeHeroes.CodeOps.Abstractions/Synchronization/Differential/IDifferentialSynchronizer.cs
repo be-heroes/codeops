@@ -9,8 +9,8 @@ namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
         /// <summary>
         /// Gets the differential synchronizers current differential.
         /// </summary>
-        /// <returns>A <see cref="TDiff"/> representing the asynchronous operation, to fetch the current value of the synchronizer.</returns>
-        TDiff GetDifferential();
+        /// <returns>A <see cref="TDiff"/> the current differential of the synchronizer.</returns>
+        TDiff? GetDifferential();
         
         /// <summary>
         /// Asynchronously retrieves an enumerator of differentials that represent the pending differential edits to be applied to the differential synchronizers current differential.

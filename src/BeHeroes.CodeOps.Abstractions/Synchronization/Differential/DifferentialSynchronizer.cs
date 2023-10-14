@@ -44,9 +44,9 @@ namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
         /// Gets the current differential of the synchronizer.
         /// </summary>
         /// <returns>A <see cref="TDiff"/>.</returns>
-        public TDiff GetDifferential()
+        public TDiff? GetDifferential()
         {
-            return _shadow.Version > _current.Version ? _shadow : _current;
+            return _shadow?.Version > _current?.Version ? _shadow : _current;
         }
 
         /// <summary>
