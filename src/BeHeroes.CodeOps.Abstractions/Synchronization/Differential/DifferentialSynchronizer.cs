@@ -33,10 +33,9 @@ namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
         /// Represents a differential synchronizer that synchronizes changes to a given differential.
         /// </summary>
         /// <typeparam name="TDiff">The type of differential being handle by the synchronizer.</typeparam>
-        public DifferentialSynchronizer(TDiff current, ISequencer sequencer, IDifferentialQueue? differentialQueue = default!)
+        public DifferentialSynchronizer(ISequencer sequencer, IDifferentialQueue? differentialQueue = default!)
         {
-            //Assign the current differential and sequencer.
-            _shadow = _current = current ?? throw new ArgumentNullException(nameof(current));
+            //Assign the sequencer and queue.
             _sequencer = sequencer ?? throw new ArgumentNullException(nameof(sequencer));
             _differentialQueue = differentialQueue ?? new DifferentialQueue();
         }
@@ -44,25 +43,25 @@ namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
         /// <summary>
         /// Gets the current differential of the synchronizer.
         /// </summary>
-        /// <returns>A <see cref="ValueTask{TDiff}"/> representing the asynchronous operation.</returns>
-        public ValueTask<TDiff> GetDifferential()
+        /// <returns>A <see cref="TDiff"/>.</returns>
+        public TDiff GetDifferential()
         {
-            return _shadow.Version > _current.Version ? ValueTask.FromResult(_shadow) : ValueTask.FromResult(_current);
+            return _shadow.Version > _current.Version ? _shadow : _current;
         }
 
         /// <summary>
-        /// Returns an asynchronous operation that yields an enumerator over the differential edits in the queue.
+        /// Returns an enumerator over the differential edits in the queue.
         /// </summary>
-        /// <returns>A <see cref="ValueTask{TResult}"/> representing the asynchronous operation that yields an enumerator over the differential edits in the queue.</returns>
-        public ValueTask<IEnumerator<IDifferential>> GetDifferentialEdits()
+        /// <returns>A <see cref="TResult"/> yields an enumerator over the differential edits in the queue.</returns>
+        public IEnumerator<IDifferential> GetDifferentialEdits()
         {
-            return ValueTask.FromResult(_differentialQueue.GetEnumerator());
+            return _differentialQueue.GetEnumerator();
         }
 
         /// <summary>
         /// Applies the specified differential to the differential synchronizer.
         /// </summary>
         /// <param name="differential">The differential to apply.</param>
-        public abstract ValueTask ApplyDifferential(IDifferential differential);
+        public abstract void ApplyDifferential(IDifferential differential);
     }
 }

@@ -9,20 +9,20 @@ namespace BeHeroes.CodeOps.Abstractions.Synchronization.Differential
         /// <summary>
         /// Gets the differential synchronizers current differential.
         /// </summary>
-        /// <returns>A <see cref="ValueTask{TDiff}"/> representing the asynchronous operation, to fetch the current value of the synchronizer.</returns>
-        ValueTask<TDiff> GetDifferential();
+        /// <returns>A <see cref="TDiff"/> representing the asynchronous operation, to fetch the current value of the synchronizer.</returns>
+        TDiff GetDifferential();
         
         /// <summary>
         /// Asynchronously retrieves an enumerator of differentials that represent the pending differential edits to be applied to the differential synchronizers current differential.
         /// </summary>
-        /// <returns>A <see cref="ValueTask{TResult}"/> that represents the asynchronous operation. The result of the task contains an enumerator of <see cref="IDifferential"/> elements.</returns>
-        ValueTask<IEnumerator<IDifferential>> GetDifferentialEdits();
+        /// <returns>A <see cref="TResult"/> that represents the asynchronous operation. The result of the task contains an enumerator of <see cref="IDifferential"/> elements.</returns>
+        IEnumerator<IDifferential> GetDifferentialEdits();
 
         /// <summary>
         /// Applies the specified differential to the differential synchronizers.
         /// </summary>
         /// <param name="differential">The differential to apply.</param>
         /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
-        ValueTask ApplyDifferential(IDifferential differential);
+        void ApplyDifferential(IDifferential differential);
     }
 }   
