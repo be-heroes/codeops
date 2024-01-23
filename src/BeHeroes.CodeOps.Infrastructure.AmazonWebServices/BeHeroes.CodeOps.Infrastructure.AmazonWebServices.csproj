@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-      <TargetFramework>net7.0</TargetFramework>
+      <TargetFramework>net8.0</TargetFramework>
       <ImplicitUsings>enable</ImplicitUsings>
       <Nullable>enable</Nullable>
       <PackageId>BeHeroes.CodeOps.Infrastructure.AmazonWebServices</PackageId>      
@@ -15,14 +15,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AWSSDK.CostExplorer" Version="3.7.103.81" />
-      <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.5" />
-      <PackageReference Include="AWSSDK.IdentityManagement" Version="3.7.100.118" />
-      <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.101.52" />
-      <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.104.20" />
-      <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
-      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+      <PackageReference Include="AWSSDK.CostExplorer" Version="3.7.300.38" />
+      <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />
+      <PackageReference Include="AWSSDK.IdentityManagement" Version="3.7.300.38" />
+      <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.300.39" />
+      <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.301.34" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
       <PackageReference Include="BeHeroes.CodeOps.Abstractions" Version="1.0.0" />
     </ItemGroup>
 

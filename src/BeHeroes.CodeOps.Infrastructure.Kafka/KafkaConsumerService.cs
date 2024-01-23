@@ -68,9 +68,9 @@ namespace BeHeroes.CodeOps.Infrastructure.Kafka
                     }
                 }
             }
-            catch (OperationCanceledException e)
+            catch (OperationCanceledException)
             {
-                _logger?.LogInformation("Closing consumer.", e);
+                _logger?.LogInformation("Closing consumer.");
 
                 consumer.Close();
             }
