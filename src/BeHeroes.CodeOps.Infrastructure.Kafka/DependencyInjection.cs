@@ -19,6 +19,7 @@ namespace BeHeroes.CodeOps.Infrastructure.Kafka
             services.Configure<KafkaOptions>(configuration.GetSection(KafkaOptions.Kafka));
             services.AddKafkaProducer();
             services.AddKafkaConsumer();
+            services.AddTransient<KafkaConsumerService>();
         }
 
         private static void AddKafkaProducer(this IServiceCollection services)
