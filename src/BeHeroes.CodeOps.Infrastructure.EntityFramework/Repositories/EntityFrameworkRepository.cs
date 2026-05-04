@@ -23,6 +23,8 @@ namespace BeHeroes.CodeOps.Infrastructure.EntityFramework.Repositories
             var changeTracker = _context.Entry(aggregate);
 
             changeTracker.State = EntityState.Modified;
+            
+            _context.ChangeTracker.DetectChanges();
 
             return changeTracker.Entity;
         }
